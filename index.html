@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
+  <meta name="description" content="MIDAP: an open adder-tree NPU platform that keeps feature maps on-chip via SRAM in the datapath — with an MLIR compiler, cycle-accurate simulator, and FPGA-validated RTL for embedded CNN inference.">
+  <meta name="keywords" content="NPU, CNN accelerator, adder-tree, deep learning accelerator, embedded AI, MLIR compiler, cycle-accurate simulator, RTL, FPGA, SRAM datapath, tensor virtualization">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="CAP Lab · Seoul National University">
+  <meta property="og:title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
+  <meta property="og:description" content="An open adder-tree NPU platform with SRAM in the datapath, a full compiler + cycle-accurate simulator, and FPGA-validated RTL. DAC 2026 University Demonstration.">
+  <meta property="og:url" content="https://openmidap.github.io/">
+  <link rel="canonical" href="https://openmidap.github.io/">
+
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <meta name="twitter:title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
+  <meta name="twitter:description" content="Adder-tree NPU with SRAM in the datapath, full compiler + cycle-accurate simulator, FPGA-validated RTL. DAC 2026 University Demonstration.">
+
+  <meta name="citation_title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="Design Automation Conference (DAC) — University Demonstration">
+
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+
+  <title>MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration | DAC 2026</title>
+
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="apple-touch-icon" href="static/images/favicon.svg">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration",
+    "description": "An open adder-tree NPU platform with SRAM in the datapath, a full MLIR compiler, a cycle-accurate simulator, and FPGA-validated RTL for embedded CNN inference.",
+    "programmingLanguage": ["Python", "C++", "MLIR", "SystemVerilog"],
+    "publisher": {"@type": "Organization", "name": "CAP Lab, Seoul National University"},
+    "keywords": ["NPU", "CNN accelerator", "adder-tree", "MLIR", "cycle-accurate simulator", "RTL", "FPGA", "embedded AI"],
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+  }
+  </script>
+</head>
+<body>
+
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <div class="floating-actions">
+
+    <div class="waitlist-container">
+      <button class="waitlist-btn" onclick="openWaitlist()" title="Join the release waitlist">
+        <i class="fas fa-bell"></i>
+        Join Waitlist
+      </button>
+    </div>
+
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="MIDAP reference papers">
+      <i class="fas fa-flask"></i>
+      Papers
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>MIDAP reference papers</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://ieeexplore.ieee.org/document/8988663" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>A Novel CNN (Convolutional Neural Network) Accelerator That Enables Fully-pipelined Execution of Layers</h5>
+            <p>Donghyun Kang, Jintaek Kang, Hyungdal Kwon, Hyunsik Park, and Soonhoi Ha</p>
+            <span class="work-venue">37th IEEE International Conference on Computer Design (ICCD), Nov. 2019</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ieeexplore.ieee.org/document/9218726" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>Tensor Virtualization Technique to Support Efficient Data Reorganization for CNN Accelerators</h5>
+            <p>Donghyun Kang and Soonhoi Ha</p>
+            <span class="work-venue">Design Automation Conference (DAC), Jul. 2020</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ieeexplore.ieee.org/document/10818138" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>Vision Transformer Inference on a CNN Accelerator</h5>
+            <p>Changjae Yi, Hyunsu Moh, and Soonhoi Ha</p>
+            <span class="work-venue">IEEE 42nd International Conference on Computer Design (ICCD), Jan. 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://ieeexplore.ieee.org/document/11240951" class="work-item" target="_blank" rel="noopener">
+          <div class="work-info">
+            <h5>Enabling Decoder-only Language Model Inference on a CNN Accelerator</h5>
+            <p>Seongwoo Choi, Hyunsu Moh, Changjae Yi, Joon Choi, and Soonhoi Ha</p>
+            <span class="work-venue">International Conference on Computer-Aided Design (ICCAD), Nov. 2025</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <main id="main-content">
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <span class="dac-badge"><i class="fas fa-microchip"></i>DAC 2026 · University Demonstration</span>
+
+            <h1 class="title is-1 publication-title">MIDAP</h1>
+            <p class="is-size-4" style="margin-top:-0.4rem;color:var(--text-secondary);font-weight:600;">
+              A Full-Stack Open NPU Platform for Embedded AI Exploration
+            </p>
+
+            <p class="hero-tagline">
+              <strong>MIDAP</strong> (Memory In the Datapath Architecture Processor) is a
+              high-performance, <span class="accent">adder-tree based CNN accelerator</span>.
+            </p>
+
+            <div class="is-size-6 publication-authors" style="margin-top:1.4rem;">
+              <span class="author-block"><a href="https://peace.snu.ac.kr" target="_blank" rel="noopener noreferrer">CAP Lab</a> · Seoul National University</span>
+            </div>
+
+            <!-- ==================== LINK BUTTONS (public actions + waitlist) ==================== -->
+            <div class="column has-text-centered" style="margin-top:1.5rem;">
+              <div class="publication-links">
+                
+                <span class="link-block">
+                  <a href="#" onclick="event.stopPropagation(); toggleMoreWorks(); return false;" class="external-link button is-normal is-rounded is-dark" title="MIDAP reference papers">
+                    <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+                  </a>
+                </span>
+                
+                <span class="link-block">
+                  <a href="static/pdfs/slides.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-powerpoint"></i></span><span>Slides</span>
+                  </a>
+                </span>
+                
+                <span class="link-block">
+                  <a href="static/pdfs/poster_placeholder.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-image"></i></span><span>Poster</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-video"></i></span><span>Demo</span>
+                  </a>
+                </span>
+                <span class="link-block">
+                  <a href="#" onclick="openWaitlist(); return false;" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-user-plus"></i></span><span>Join Waitlist</span>
+                  </a>
+                </span>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ARCHITECTURE (key features + diagram, first) ==================== -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Architecture</h2>
+      <p class="section-lead has-text-centered">
+        It is engineered to maximize throughput-per-watt by minimizing DRAM access overhead.
+      </p>
+
+      <div class="arch-cards">
+        <div class="arch-card">
+          <h3><i class="fas fa-memory"></i>Integrated SRAM</h3>
+          <p>Dedicated memory within the datapath for ultra-low latency.</p>
+        </div>
+        <div class="arch-card">
+          <h3><i class="fas fa-layer-group"></i>Multi-bank FMEM</h3>
+          <p>Efficient inter-layer data reuse.</p>
+        </div>
+        <div class="arch-card">
+          <h3><i class="fas fa-object-group"></i>Fused Architecture</h3>
+          <p>Unified pipeline for convolution, activation, and reduction.</p>
+        </div>
+      </div>
+
+      <figure class="midap-figure">
+        <img src="static/images/architecture.png"
+             alt="MIDAP adder-tree NPU core with SRAM placed in the datapath and multi-bank on-chip memory">
+        <figcaption>Adder-tree compute core with SRAM in the datapath and bus-free multi-bank on-chip memory.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== FULL-STACK FLOW (verification + compiler / simulator / RTL) ==================== -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Full-stack flow</h2>
+      <p class="section-lead has-text-centered">
+        A single quantized ONNX model runs end to end, compiled to Fused IR, L1 and L2 instructions, then to
+        hardware microcode, and executed at every level. <strong>Hover, tap or focus any box</strong> to
+        highlight its inputs and outputs and read what it does.
+      </p>
+
+      <div class="fsflow">
+        <div class="fsflow-board" id="fsflow" role="img"
+             aria-label="MIDAP full-stack flow. A quantized ONNX model is compiled by MIDAP HLC through ONNX-to-TOSA and operator fusion, op tiling and memory compile, and L1-to-L2 lowering into the L2 instruction stream; codegen then lowers L2 to microcode. The L2 instruction stream is run by the Python HL simulator, and the microcode is run by the Python LL simulator, the RTL simulator, and the Xilinx KCU1500 FPGA.">
+          <noscript>
+            <img src="static/images/midap-end-to-end-workflow.png"
+                 alt="MIDAP end-to-end workflow: a quantized ONNX model is compiled by MIDAP HLC into L1 and L2 instructions and microcode, then executed and cross-validated on the HL simulator, LL simulator, RTL simulator and FPGA.">
+          </noscript>
+        </div>
+        <aside class="fspanel" id="fspanel"></aside>
+      </div>
+
+      <div class="arch-cards">
+        <div class="arch-card">
+          <h3><i class="fas fa-code"></i>Compiler</h3>
+          <ul>
+            <li><strong>In:</strong> Quantized ONNX (→ TOSA)</li>
+            <li><strong>Passes:</strong> op-fuse → tile → memory-compile → L1-to-L2 lowering</li>
+            <li><strong>Out:</strong> L1 IR (tile-level, bank-aware), L2 IR (<code>config/run/wait</code>)</li>
+          </ul>
+        </div>
+        <div class="arch-card">
+          <h3><i class="fas fa-gauge-high"></i>Simulator</h3>
+          <ul>
+            <li><strong>Accuracy:</strong> cycle-accurate, end-to-end latency including DRAM overhead</li>
+            <li><strong>Levels:</strong> high-level (performance &amp; bottlenecks) + low-level (runs microcode)</li>
+            <li><strong>Tracing:</strong> Perfetto-compatible export for DMA and core-stall analysis</li>
+            
+          </ul>
+        </div>
+        <div class="arch-card">
+          <h3><i class="fas fa-microchip"></i>RTL</h3>
+          <ul>
+            <li>FPGA-oriented SoC (KCU1500 target) with an IBEX RISC-V control core</li>
+            <li><strong>Bus interfaces:</strong> AXI (DRAM model) + APB</li>
+            <li><strong>Verify:</strong> Synopsys VCS simulation</li>
+            
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== BIBTEX ==================== -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      
+<pre id="bibtex-code"><code>@inproceedings{midap2026,
+  title     = {MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration},
+  author    = {Changjae Yi and Hyunsu Moh and Seongwoo Choi and Joon Choi and Youngchul Yoon and Soonhoi Ha},
+  booktitle = {Design Automation Conference (DAC), University Demonstration},
+  year      = {2026},
+  note      = {CAP Lab, Seoul National University}
+}</code></pre>
+    </div>
+  </section>
+
+  <!-- ==================== ACKNOWLEDGEMENTS & UPDATES ==================== -->
+  <section class="section hero is-light" id="availability">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Acknowledgements &amp; Updates</h2>
+      <div class="content has-text-justified">
+        <p>
+          MIDAP is being developed by the <strong>CAP Lab at Seoul National University</strong>, led by
+          Prof.&nbsp;Soonhoi&nbsp;Ha. It builds on prior work on fully pipelined CNN acceleration and
+          tensor virtualization (see the <em>Papers</em> menu).
+        </p>
+        <p>
+          A public release of the MIDAP platform is planned for H1 2027.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section class="section" id="contact">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Contact</h2>
+      <div class="content">
+        <p>
+          CAP Lab, Department of Computer Engineering, Seoul National University<br>
+          Email: <a href="mailto:cap@iris.snu.ac.kr">cap@iris.snu.ac.kr</a><br>
+          Homepage: <a href="https://peace.snu.ac.kr" target="_blank" rel="noopener noreferrer">peace.snu.ac.kr</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER (template credit + CC BY-SA — DO NOT REMOVE) ==================== -->
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+          <p class="has-text-centered"><a href="privacy.html">Privacy Policy</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  </main>
+
+  <div class="waitlist-modal waitlist-modal--embed" id="waitlistModal" aria-hidden="true">
+    
+    <div class="waitlist-modal-backdrop"></div>
+    <div class="waitlist-modal-card waitlist-modal-card--embed" role="dialog" aria-modal="true" aria-label="Join the waitlist">
+      <button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close">
+        <i class="fas fa-times"></i>
+      </button>
+
+      <div class="waitlist-embed">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeUnMUHDPoXblx6yiZHRsc4A2s6YD9WljTt01srlWMXPMNRIw/viewform?embedded=true&amp;hl=en"
+          title="MIDAP release waitlist form"
+          loading="lazy"
+          width="100%"
+          height="780"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">Loading…</iframe>
+        <p class="waitlist-embed-fallback">Form not loading?
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUnMUHDPoXblx6yiZHRsc4A2s6YD9WljTt01srlWMXPMNRIw/viewform?hl=en" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  </body>
+  </html>
