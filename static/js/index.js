@@ -272,10 +272,10 @@ function buildFsFlow() {
           d: 'The high-level cycle-accurate simulator. It models the datapath, DRAM traffic and stalls cycle by cycle as it runs the L2 instruction stream. The simulator reports end-to-end latency plus a per-stage bottleneck breakdown. The RTL and FPGA runs are cross-validated against its predicted cycles.' },
         { id: 'llsim', g: 'sim', l: 'Python LL Simulator', s: 'low-level · microcode', x: 430, y: 430, w: 196, h: 46, out: ['Verification'],
           d: 'The low-level Python simulator. It runs the generated microcode instruction by instruction at the microcode level, checking functional correctness and producing the golden result before any RTL or hardware run.' },
-        { id: 'rtlsim', g: 'hw', l: 'RTL Simulator', s: 'Synopsys VCS', x: 430, y: 486, w: 196, h: 46, out: ['Performance estimation', 'Verification'],
-          d: 'Runs the identical microcode on MIDAP’s RTL in a Synopsys VCS simulation, exercising the real hardware description (adder-tree core, on-chip memory, AXI/APB, IBEX control core) at the signal level. Its cycle-accurate results are compared against the HL simulator’s predictions to confirm the model matches the hardware.' },
-        { id: 'fpga', g: 'hw', l: 'FPGA', s: 'Xilinx KCU1500', x: 430, y: 542, w: 196, h: 46, out: ['Performance estimation', 'Verification'],
-          d: 'Maps the MIDAP design onto a Xilinx KCU1500 FPGA and runs the same microcode on real hardware at speed. As the final validation level, the FPGA run confirms that the design works on a physical device and that its measured cycles line up with the simulator and RTL.' }
+        { id: 'rtlsim', g: 'hw', l: 'RTL Simulator', s: '', x: 430, y: 486, w: 196, h: 46, out: ['Performance estimation', 'Verification'],
+          d: 'Runs the identical microcode against MIDAP’s RTL in simulation, exercising the real hardware description (adder-tree core, on-chip memory, AXI/APB, IBEX control core) at the signal level. Its cycle-accurate results are compared against the HL simulator’s predictions to confirm the model matches the hardware.' },
+        { id: 'fpga', g: 'hw', l: 'FPGA', s: '', x: 430, y: 542, w: 196, h: 46, out: ['Performance estimation', 'Verification'],
+          d: 'Maps the MIDAP design onto an FPGA and runs the same microcode on real hardware at speed. As the final validation level, the FPGA run confirms that the design works on a physical device and that its measured cycles line up with the simulator and RTL.' }
     ];
     var byId = {};
     N.forEach(function (m) { byId[m.id] = m; });

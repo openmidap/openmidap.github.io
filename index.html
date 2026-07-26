@@ -273,7 +273,7 @@
 
       <div class="fsflow">
         <div class="fsflow-board" id="fsflow" role="img"
-             aria-label="MIDAP full-stack flow. A quantized ONNX model is compiled by MIDAP HLC through ONNX-to-TOSA and operator fusion, op tiling and memory compile, and L1-to-L2 lowering into the L2 instruction stream; codegen then lowers L2 to microcode. The L2 instruction stream is run by the Python HL simulator, and the microcode is run by the Python LL simulator, the RTL simulator, and the Xilinx KCU1500 FPGA.">
+             aria-label="MIDAP full-stack flow. A quantized ONNX model is compiled by MIDAP HLC through ONNX-to-TOSA and operator fusion, op tiling and memory compile, and L1-to-L2 lowering into the L2 instruction stream; codegen then lowers L2 to microcode. The L2 instruction stream is run by the Python HL simulator, and the microcode is run by the Python LL simulator, the RTL simulator, and the FPGA.">
           <noscript>
             <img src="static/images/midap-end-to-end-workflow.png"
                  alt="MIDAP end-to-end workflow: a quantized ONNX model is compiled by MIDAP HLC into L1 and L2 instructions and microcode, then executed and cross-validated on the HL simulator, LL simulator, RTL simulator and FPGA.">
@@ -303,13 +303,17 @@
         <div class="arch-card">
           <h3><i class="fas fa-microchip"></i>RTL</h3>
           <ul>
-            <li>FPGA-oriented SoC (KCU1500 target) with an IBEX RISC-V control core</li>
+            <li>FPGA-oriented SoC with an IBEX RISC-V control core</li>
             <li><strong>Bus interfaces:</strong> AXI (DRAM model) + APB</li>
-            <li><strong>Verify:</strong> Synopsys VCS simulation</li>
+            <li><strong>Verify:</strong> RTL simulation</li>
             
           </ul>
         </div>
       </div>
+
+      <p class="section-note has-text-centered">
+        Validated on a Xilinx KCU1500; the RTL is not tied to any specific board or simulator.
+      </p>
 
     </div>
   </section>
