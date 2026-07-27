@@ -373,7 +373,7 @@
         </div>
         <div class="perf-group-foot">
           <p>GEMM input preprocessing and Softmax are excluded from the measurement scope.</p>
-          <p class="perf-source">Source: D. Kang, Ph.D. thesis, Seoul National University, Table 7.1 (ICCD 2019 / DSD 2022 line)</p>
+          <p class="perf-source">Source: <a href="https://dcollection.snu.ac.kr/common/orgView/000000170604" target="_blank" rel="noopener">D. Kang, Ph.D. thesis, Seoul National University</a>, Table 7.1 (<a href="https://ieeexplore.ieee.org/document/8988663" target="_blank" rel="noopener">ICCD 2019</a> / DSD 2022 line)</p>
         </div>
       </div>
 
@@ -406,7 +406,7 @@
           <p>Silicon-ready implementation; 2.608 mm² die area, 66.7% of which is SRAM.</p>
           <p><sup>†</sup> The first convolution layer is assumed to be handled by a separate convolution engine in the ISP and is excluded (~3% of total latency). MIDAP input tensors are 208×208×32 (YOLOv4-tiny), 160×160×64 (DeepLabV3+), and 130×130×64 (EfficientNet-b2).</p>
           <p><sup>‡</sup> The final upsampling layer is assumed to run on the host CPU.</p>
-          <p class="perf-source">Source: MIDAP post-layout power/timing analysis; UDDAC 2026 DAC poster</p>
+          <p class="perf-source">Source: MIDAP post-layout power/timing analysis; <a href="static/pdfs/poster.pdf" target="_blank" rel="noopener">UDDAC 2026 DAC poster</a></p>
         </div>
       </div>
 
@@ -435,7 +435,7 @@
         </div>
         <div class="perf-group-foot">
           <p>ViT-Base offloads Softmax and LayerNorm to a Jetson AGX GPU with multi-head scheduling applied. Gemma2-2b runs RMSNorm and Softmax on a 16-lane FP16 SIMD unit.</p>
-          <p class="perf-source">Source: ICCD 2024, Table VII (ViT); ICCAD 2025, Table IV (Gemma2-2b)</p>
+          <p class="perf-source">Source: <a href="https://ieeexplore.ieee.org/document/10818138" target="_blank" rel="noopener">ICCD 2024</a>, Table VII (ViT); <a href="https://ieeexplore.ieee.org/document/11240951" target="_blank" rel="noopener">ICCAD 2025</a>, Table IV (Gemma2-2b)</p>
         </div>
       </div>
 
