@@ -269,6 +269,73 @@
     </div>
   </section>
 
+  <!-- ==================== WHY MIDAP (two key advantages) ====================
+       Content transcribed from the DAC 2026 poster (static/pdfs/poster.pdf),
+       "The NPU: MIDAP" panel, items 1-2. Keep in sync with the poster. -->
+  <section class="section" id="why-midap">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Why MIDAP</h2>
+      <p class="section-lead has-text-centered">
+        Two advantages define MIDAP: <strong>end-to-end execution</strong> — the entire network runs on
+        one accelerator — and <strong>diverse model support</strong> on that same accelerator.
+      </p>
+
+      <div class="adv-card">
+        <div class="adv-head">
+          <span class="adv-num" aria-hidden="true">1</span>
+          <div>
+            <p class="adv-eyebrow">End-to-end execution</p>
+            <h3>The entire network, on one accelerator</h3>
+            <p class="adv-sub">16+ operators execute on MIDAP with <strong>no CPU/GPU offloading</strong>,
+              keeping MAC utilization high and DRAM access low.</p>
+          </div>
+        </div>
+        <ul class="op-grid" aria-label="Operators executed on the accelerator">
+          <li>Convolution</li>
+          <li>GEMM / GEMV / FC</li>
+          <li>Activation · GELU LUT</li>
+          <li>Dilated Convolution</li>
+          <li>Depthwise Convolution</li>
+          <li>Element-wise Add / Mult</li>
+          <li>Transposed Convolution</li>
+          <li>Pooling (max · avg)</li>
+          <li>Global Pooling</li>
+          <li>Nearest-Neighbor Upsampling</li>
+          <li>Bilinear Upsampling</li>
+          <li>Implicit Transpose</li>
+        </ul>
+        <p class="adv-foot">
+          Coverage comes from the native datapath, CIM and reduction-module datapath extensions,
+          tensor virtualization, and compiler techniques — see the
+          <a href="#" onclick="event.stopPropagation(); toggleMoreWorks(); return false;">reference papers</a>.
+        </p>
+      </div>
+
+      <div class="adv-card">
+        <div class="adv-head">
+          <span class="adv-num" aria-hidden="true">2</span>
+          <div>
+            <p class="adv-eyebrow">Diverse model support</p>
+            <h3>One accelerator for diverse AI models</h3>
+            <p class="adv-sub">The same accelerator supports CNNs — classification, detection,
+              segmentation — as well as generative models, vision Transformers, and language models.</p>
+          </div>
+        </div>
+        <table class="model-table">
+          <tbody>
+            <tr><th scope="row">Classification</th><td>MobileNet V1/V2/V3, ResNet-50/101/152, WideResNet, SE-ResNet, EfficientNet (B0, B1, …), Inception-v3, etc.</td></tr>
+            <tr><th scope="row">Object Detection</th><td>YOLOv3/v4/v4-Tiny/v5/v8, MobileNet-SSD, etc.</td></tr>
+            <tr><th scope="row">Semantic Segmentation</th><td>DeepLabV3+, U-Net</td></tr>
+            <tr><th scope="row">Generative Models</th><td>DCGAN, DiscoGAN</td></tr>
+            <tr><th scope="row">Vision Transformers</th><td>ViT-Base <span class="model-ref">(<a href="https://ieeexplore.ieee.org/document/10818138" target="_blank" rel="noopener">ICCD 2024</a>)</span></td></tr>
+            <tr><th scope="row">Language Models</th><td>Gemma 1/2 <span class="model-ref">(<a href="https://ieeexplore.ieee.org/document/11240951" target="_blank" rel="noopener">ICCAD 2025</a>)</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== FULL-STACK FLOW (verification + compiler / simulator / RTL) ==================== -->
   <section class="section hero is-light">
     <div class="container is-max-desktop">
