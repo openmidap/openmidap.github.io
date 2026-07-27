@@ -318,6 +318,139 @@
     </div>
   </section>
 
+  <!-- ==================== PERFORMANCE ====================
+       Data source: midap_performance_data.json (handoff, 2026-07-27).
+       Rows are grouped by MEASUREMENT ENVIRONMENT at different clocks; group
+       order and row order are fixed — do not sort, merge, or interleave.
+       All figures are effective-rate (never peak-based TOPS/W). Values are
+       transcribed verbatim from the data file; do not recompute or round.
+       2026-07-27 requester revisions: Effective TOPS column removed (Util. =
+       Effective TOPS ÷ Peak TOPS is defined above the tables instead), and the
+       empty Power/TOPS-W columns dropped from the two groups without power data. -->
+  <section class="section" id="performance">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Performance</h2>
+      <p class="section-lead has-text-centered">
+        Measured results, grouped by measurement environment. Each group runs at its own
+        clock frequency; figures are not comparable across groups.
+      </p>
+      <p class="perf-def has-text-centered">
+        <strong>Util. (%) = Effective TOPS ÷ Peak TOPS</strong>, where Peak TOPS = 2 × 1,024 MACs × clock
+      </p>
+
+      <div class="perf-group">
+        <div class="perf-group-head">
+          <h3 id="perf-vp-label">Cycle-accurate virtual prototype</h3>
+          <p class="perf-group-config" id="perf-vp-config">1,024 MACs @ 1 GHz · 1.5 MB on-chip SRAM · <span class="pill info perf-peak">peak 2.05 TOPS</span></p>
+        </div>
+        <div class="perf-scroll" role="region" tabindex="0" aria-labelledby="perf-vp-label perf-vp-config">
+          <table class="perf-table cols-5">
+            <thead>
+              <tr>
+                <th scope="col">Network</th>
+                <th scope="col">Task</th>
+                <th scope="col">Input</th>
+                <th scope="col" class="num">Latency (ms)</th>
+                <th scope="col" class="num">Util. (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">ResNet-50</th><td>Classification</td><td>224×224</td><td class="num">5.75</td><td class="num">69.5</td></tr>
+              <tr><th scope="row">ResNet-50</th><td>Classification</td><td>299×299</td><td class="num">9.65</td><td class="num">77.2</td></tr>
+              <tr><th scope="row">Inception V3</th><td>Classification</td><td>299×299</td><td class="num">8.05</td><td class="num">69.3</td></tr>
+              <tr><th scope="row">Inception V3</th><td>Classification</td><td>346×346</td><td class="num">10.0</td><td class="num">71.5</td></tr>
+              <tr><th scope="row">MobileNet V2</th><td>Classification</td><td>224×224</td><td class="num">1.19</td><td class="num">24.6</td></tr>
+              <tr><th scope="row">MobileNet V3-Large</th><td>Classification</td><td>224×224</td><td class="num">1.28</td><td class="num">16.7</td></tr>
+              <tr><th scope="row">MobileNet V3-Large</th><td>Classification</td><td>512×512</td><td class="num">6.93</td><td class="num">15.9</td></tr>
+              <tr><th scope="row">MobileNet V3-Large (min)</th><td>Classification</td><td>224×224</td><td class="num">1.07</td><td class="num">19.3</td></tr>
+              <tr><th scope="row">MobileNet V3-Large (min)</th><td>Classification</td><td>512×512</td><td class="num">6.27</td><td class="num">17.1</td></tr>
+              <tr><th scope="row">EfficientNet-b0</th><td>Classification</td><td>224×224</td><td class="num">1.67</td><td class="num">22.6</td></tr>
+              <tr><th scope="row">MobileNet v1-SSD</th><td>Detection</td><td>224×224</td><td class="num">1.32</td><td class="num">50.7</td></tr>
+              <tr><th scope="row">MobileNet v1-SSD</th><td>Detection</td><td>300×300</td><td class="num">2.23</td><td class="num">55.6</td></tr>
+              <tr><th scope="row">U-Net</th><td>Segmentation</td><td>128×128</td><td class="num">12.7</td><td class="num">87.1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="perf-group-foot">
+          <p>GEMM input preprocessing and Softmax are excluded from the measurement scope.</p>
+          <p class="perf-source">Source: D. Kang, Ph.D. thesis, Seoul National University, Table 7.1 (ICCD 2019 / DSD 2022 line)</p>
+        </div>
+      </div>
+
+      <div class="perf-group">
+        <div class="perf-group-head">
+          <h3 id="perf-asic-label">ASIC post-layout (post-netlist + SDF)</h3>
+          <p class="perf-group-config" id="perf-asic-config">Samsung 14 nm · 1,024 MACs @ 534 MHz · 0.8 V · LPDDR4-4266 · <span class="pill info perf-peak">peak 1.09 TOPS</span></p>
+        </div>
+        <div class="perf-scroll" role="region" tabindex="0" aria-labelledby="perf-asic-label perf-asic-config">
+          <table class="perf-table">
+            <thead>
+              <tr>
+                <th scope="col">Network</th>
+                <th scope="col">Task</th>
+                <th scope="col">Input</th>
+                <th scope="col" class="num">Latency (ms)</th>
+                <th scope="col" class="num">Util. (%)</th>
+                <th scope="col" class="num">Power (W)</th>
+                <th scope="col" class="num">TOPS/W</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">YOLOv4-tiny</th><td>Detection</td><td>416×416<sup class="perf-fn-mark">†</sup></td><td class="num">12.66</td><td class="num">70.6</td><td class="num">0.425</td><td class="num">1.81</td></tr>
+              <tr><th scope="row">DeepLabV3+</th><td>Segmentation</td><td>320×320<sup class="perf-fn-mark">†‡</sup></td><td class="num">27.79</td><td class="num">67.8</td><td class="num">0.404</td><td class="num">1.83</td></tr>
+              <tr><th scope="row">EfficientNet-b2</th><td>Classification</td><td>260×260<sup class="perf-fn-mark">†</sup></td><td class="num">11.13</td><td class="num">13.8</td><td class="num">0.225</td><td class="num">0.67</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="perf-group-foot">
+          <p>Silicon-ready implementation; 2.608 mm² die area, 66.7% of which is SRAM.</p>
+          <p><sup>†</sup> The first convolution layer is assumed to be handled by a separate convolution engine in the ISP and is excluded (~3% of total latency). MIDAP input tensors are 208×208×32 (YOLOv4-tiny), 160×160×64 (DeepLabV3+), and 130×130×64 (EfficientNet-b2).</p>
+          <p><sup>‡</sup> The final upsampling layer is assumed to run on the host CPU.</p>
+          <p class="perf-source">Source: MIDAP post-layout power/timing analysis; UDDAC 2026 DAC poster</p>
+        </div>
+      </div>
+
+      <div class="perf-group">
+        <div class="perf-group-head">
+          <h3 id="perf-transformer-label">Virtual prototype + FP16 SIMD extension</h3>
+          <p class="perf-group-config" id="perf-transformer-config">Transformer workloads · 1,024 MACs · 25.6 GB/s DRAM</p>
+        </div>
+        <div class="perf-scroll" role="region" tabindex="0" aria-labelledby="perf-transformer-label perf-transformer-config">
+          <table class="perf-table cols-5">
+            <thead>
+              <tr>
+                <th scope="col">Network</th>
+                <th scope="col">Task</th>
+                <th scope="col">Input</th>
+                <th scope="col" class="num">Latency (ms)</th>
+                <th scope="col" class="num">Util. (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">ViT-Base</th><td>Vision Transformer</td><td>224×224, 12 encoders @ 1 GHz</td><td class="num">21.60</td><td class="num">79.0</td></tr>
+              <tr><th scope="row">Gemma2-2b</th><td>LM, prefill (256 tok)</td><td>@ 500 MHz</td><td class="num">1127.71</td><td class="num">96.5</td></tr>
+              <tr><th scope="row">Gemma2-2b</th><td>LM, generation (KV 256)</td><td>@ 500 MHz</td><td class="num">143.33</td><td class="num">3.6</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="perf-group-foot">
+          <p>ViT-Base offloads Softmax and LayerNorm to a Jetson AGX GPU with multi-head scheduling applied. Gemma2-2b runs RMSNorm and Softmax on a 16-lane FP16 SIMD unit.</p>
+          <p class="perf-source">Source: ICCD 2024, Table VII (ViT); ICCAD 2025, Table IV (Gemma2-2b)</p>
+        </div>
+      </div>
+
+      <div class="callout perf-notes">
+        <p class="perf-notes-title">Notes</p>
+        <ul>
+          <li>Util. = Effective TOPS ÷ Peak TOPS, where Peak TOPS = 2 × 1,024 MACs × clock. TOPS/W = Effective TOPS ÷ average power — an effective-rate figure, not peak.</li>
+          <li>Latency and power are reported at each group's own clock frequency. Rows from different groups are not directly comparable.</li>
+          <li>Gemma2-2b generation shows low utilization because the stage is memory-bound; lowering the clock to 100 MHz costs under 1% in latency.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
   <!-- ==================== BIBTEX ==================== -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">

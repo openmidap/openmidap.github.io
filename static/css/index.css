@@ -1377,3 +1377,128 @@ table.midap-table tbody tr:hover { background: var(--background-secondary); }
 
 @keyframes fsSheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
+/* --- Performance section: per-environment result tables -----------------
+   Three measurement environments are rendered as three separate cards so
+   figures are never visually merged across groups. Each card: a header band
+   (group label + config line) that sits OUTSIDE the horizontal scroller and
+   therefore stays visible on every screen size, an 8-column table that
+   scrolls horizontally on narrow screens with the Network column pinned,
+   and a footer with the group note / footnotes / source, visible on load. */
+.perf-group {
+  margin: 1.6rem 0;
+  background: var(--background-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  text-align: left;
+}
+.perf-group-head {
+  padding: 0.8rem 1rem 0.7rem;
+  background: var(--background-accent);
+  border-bottom: 2px solid var(--border-color);
+}
+.perf-group-head h3 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.perf-group-config {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+.perf-peak { vertical-align: 0.06em; } /* peak-TOPS badge (reuses .pill.info) */
+.perf-def {
+  max-width: 820px;
+  margin: 0.6rem auto 0;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.perf-def strong { color: var(--text-primary); }
+.perf-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.perf-scroll:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -2px;
+}
+table.perf-table {
+  width: 100%;
+  min-width: 700px; /* 7 columns: horizontal scroll on phones instead of squashing */
+  border-collapse: separate; /* keeps borders attached to the sticky column */
+  border-spacing: 0;
+  font-size: 0.92rem;
+  background: var(--background-primary);
+}
+table.perf-table.cols-5 { min-width: 560px; } /* groups without power columns */
+table.perf-table th,
+table.perf-table td {
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border-color);
+}
+table.perf-table thead th {
+  background: var(--background-accent);
+  color: var(--text-primary);
+  font-weight: 700;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--border-color);
+}
+table.perf-table tbody tr:last-child th,
+table.perf-table tbody tr:last-child td { border-bottom: none; }
+table.perf-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+/* pinned Network column */
+table.perf-table thead th:first-child,
+table.perf-table tbody th[scope="row"] {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  box-shadow: inset -1px 0 0 var(--border-color);
+}
+table.perf-table tbody th[scope="row"] {
+  background: var(--background-primary);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+table.perf-table tbody tr:hover td,
+table.perf-table tbody tr:hover th[scope="row"] { background: var(--background-secondary); }
+.perf-fn-mark { font-size: 0.72em; line-height: 0; }
+.perf-group-foot {
+  padding: 0.65rem 1rem 0.8rem;
+  border-top: 1px solid var(--border-color);
+}
+.perf-group-foot p {
+  margin: 0.2rem 0 0;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.perf-group-foot p:first-child { margin-top: 0; }
+.perf-group-foot sup { font-size: 0.78em; }
+.perf-source { color: var(--text-light); }
+.perf-notes-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+.perf-notes ul { margin: 0; padding-left: 1.1rem; }
+.perf-notes li {
+  margin-bottom: 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.perf-notes li:last-child { margin-bottom: 0; }
+
