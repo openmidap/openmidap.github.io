@@ -429,7 +429,7 @@ function buildFsFlow() {
             '</div>';
     };
     var show = function (id) { applyHi(id); renderPanel(id); panel.classList.toggle('is-active', pinned); };
-    var goHome = function () { pinned = false; cur = null; clearHi(); homePanel(); panel.classList.remove('is-active'); };
+    var goHome = function () { pinned = false; cur = null; clearHi(); homePanel(); panel.classList.remove('is-active', 'is-away'); };
 
     Object.keys(nodeEls).forEach(function (id) {
         var g = nodeEls[id];
@@ -459,9 +459,23 @@ function buildFsFlow() {
         if (!pinned) return;
         if (typeof window.matchMedia === 'function' && !window.matchMedia('(max-width: 900px)').matches) return;
         if (panel.contains(e.target)) return;
+        if (panel.classList.contains('is-away')) return; // sheet hidden: nothing to dismiss here
         if (e.target.closest && e.target.closest('.fsnode')) return;
         goHome();
     });
+
+    // The pinned sheet is position:fixed on phones, so on its own it would follow the reader out
+    // of this section and cover up to 72vh of what comes next (Performance) or before it (Why
+    // MIDAP). Tie it to the diagram: hide it while the diagram is off screen, bring it back when
+    // the diagram returns. Hiding rather than resetting keeps the panel out of the flow either
+    // way, so re-inserting it never shifts the page under the reader (measured: 424px jump).
+    if (typeof IntersectionObserver === 'function') {
+        new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (pinned) panel.classList.toggle('is-away', !entry.isIntersecting);
+            });
+        }).observe(board);
+    }
 
     homePanel();
 }

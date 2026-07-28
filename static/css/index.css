@@ -1373,6 +1373,11 @@ table.midap-table tbody tr:hover { background: var(--background-secondary); }
     animation: fsSheetUp 0.18s ease-out;
   }
   .fspanel.is-active .fsp-close { display: block; }
+  /* Sheet open but the diagram scrolled off screen (see buildFsFlow): hide it instead of
+     resetting it, so the panel stays out of the flow and the page does not shift. */
+  .fspanel.is-active.is-away { display: none; }
+  /* keep a flick inside the sheet from scrolling the page behind it */
+  .fspanel.is-active { overscroll-behavior: contain; }
 }
 
 @keyframes fsSheetUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
@@ -1381,9 +1386,11 @@ table.midap-table tbody tr:hover { background: var(--background-secondary); }
    Three measurement environments are rendered as three separate cards so
    figures are never visually merged across groups. Each card: a header band
    (group label + config line) that sits OUTSIDE the horizontal scroller and
-   therefore stays visible on every screen size, an 8-column table that
-   scrolls horizontally on narrow screens with the Network column pinned,
-   and a footer with the group note / footnotes / source, visible on load. */
+   therefore stays visible on every screen size, the result table, and a footer
+   with the group note / footnotes / source, visible on load.
+   Wide screens show a real table (Network column pinned, horizontal scroll if
+   needed); at <=768px every row collapses into a labelled card — see the
+   stacking block below. */
 .perf-group {
   margin: 1.6rem 0;
   background: var(--background-primary);
@@ -1512,6 +1519,72 @@ table.perf-table tbody tr:hover th[scope="row"] { background: var(--background-s
   line-height: 1.55;
 }
 .perf-notes li:last-child { margin-bottom: 0; }
+
+/* Phones / small tablets: 5-7 columns cannot fit, and a horizontal scroller
+   hides every figure behind a swipe with no visible affordance (on a 390px
+   phone only Network + Task were on screen). Each row therefore collapses into
+   a labelled card: the network name is the card title and every remaining cell
+   is one "label — value" line, so all figures are readable without scrolling
+   sideways. Labels come from each cell's data-label in index.html. */
+@media screen and (max-width: 768px) {
+  .perf-scroll {
+    overflow-x: visible;
+    -webkit-overflow-scrolling: auto;
+  }
+  table.perf-table,
+  table.perf-table.cols-5 {
+    display: block;
+    min-width: 0;
+  }
+  table.perf-table thead { display: none; }
+  table.perf-table tbody { display: block; }
+  table.perf-table tbody tr {
+    display: block;
+    padding: 0.7rem 1rem 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+  table.perf-table tbody tr:last-child { border-bottom: none; }
+  table.perf-table tbody th[scope="row"] {
+    position: static;
+    display: block;
+    padding: 0 0 0.4rem;
+    font-size: 1rem;
+    white-space: normal;
+    background: transparent;
+    border-bottom: none;
+    box-shadow: none;
+  }
+  /* The label floats left and the value keeps flowing as normal inline content,
+     so footnote marks (<sup>) stay attached to their value instead of being
+     split off as a separate flex/grid item. */
+  table.perf-table tbody td {
+    display: block;
+    overflow: hidden;
+    padding: 0.2rem 0;
+    border-bottom: none;
+    text-align: right;
+  }
+  table.perf-table tbody td::before {
+    content: attr(data-label);
+    float: left;
+    max-width: 50%;
+    padding-right: 1rem;
+    color: var(--text-light);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-align: left;
+  }
+  /* row hover is a pointer affordance only — it would just flash on tap here */
+  table.perf-table tbody tr:hover td,
+  table.perf-table tbody tr:hover th[scope="row"] { background: transparent; }
+}
+
+/* Small tablets keep the real table: tighten the cell padding so even the widest
+   group (7 columns) fits instead of leaving TOPS/W behind a horizontal scroll. */
+@media screen and (min-width: 769px) and (max-width: 900px) {
+  table.perf-table th,
+  table.perf-table td { padding: 0.55rem 0.6rem; }
+}
 
 /* --- "Why MIDAP" advantage cards (source: DAC 2026 poster) -------------- */
 .adv-card {

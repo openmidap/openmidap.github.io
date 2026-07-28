@@ -430,19 +430,19 @@
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">ResNet-50</th><td>Classification</td><td>224×224</td><td class="num">5.75</td><td class="num">69.5</td></tr>
-              <tr><th scope="row">ResNet-50</th><td>Classification</td><td>299×299</td><td class="num">9.65</td><td class="num">77.2</td></tr>
-              <tr><th scope="row">Inception V3</th><td>Classification</td><td>299×299</td><td class="num">8.05</td><td class="num">69.3</td></tr>
-              <tr><th scope="row">Inception V3</th><td>Classification</td><td>346×346</td><td class="num">10.0</td><td class="num">71.5</td></tr>
-              <tr><th scope="row">MobileNet V2</th><td>Classification</td><td>224×224</td><td class="num">1.19</td><td class="num">24.6</td></tr>
-              <tr><th scope="row">MobileNet V3-Large</th><td>Classification</td><td>224×224</td><td class="num">1.28</td><td class="num">16.7</td></tr>
-              <tr><th scope="row">MobileNet V3-Large</th><td>Classification</td><td>512×512</td><td class="num">6.93</td><td class="num">15.9</td></tr>
-              <tr><th scope="row">MobileNet V3-Large (min)</th><td>Classification</td><td>224×224</td><td class="num">1.07</td><td class="num">19.3</td></tr>
-              <tr><th scope="row">MobileNet V3-Large (min)</th><td>Classification</td><td>512×512</td><td class="num">6.27</td><td class="num">17.1</td></tr>
-              <tr><th scope="row">EfficientNet-b0</th><td>Classification</td><td>224×224</td><td class="num">1.67</td><td class="num">22.6</td></tr>
-              <tr><th scope="row">MobileNet v1-SSD</th><td>Detection</td><td>224×224</td><td class="num">1.32</td><td class="num">50.7</td></tr>
-              <tr><th scope="row">MobileNet v1-SSD</th><td>Detection</td><td>300×300</td><td class="num">2.23</td><td class="num">55.6</td></tr>
-              <tr><th scope="row">U-Net</th><td>Segmentation</td><td>128×128</td><td class="num">12.7</td><td class="num">87.1</td></tr>
+              <tr><th scope="row">ResNet-50</th><td data-label="Task">Classification</td><td data-label="Input">224×224</td><td class="num" data-label="Latency (ms)">5.75</td><td class="num" data-label="Util. (%)">69.5</td></tr>
+              <tr><th scope="row">ResNet-50</th><td data-label="Task">Classification</td><td data-label="Input">299×299</td><td class="num" data-label="Latency (ms)">9.65</td><td class="num" data-label="Util. (%)">77.2</td></tr>
+              <tr><th scope="row">Inception V3</th><td data-label="Task">Classification</td><td data-label="Input">299×299</td><td class="num" data-label="Latency (ms)">8.05</td><td class="num" data-label="Util. (%)">69.3</td></tr>
+              <tr><th scope="row">Inception V3</th><td data-label="Task">Classification</td><td data-label="Input">346×346</td><td class="num" data-label="Latency (ms)">10.0</td><td class="num" data-label="Util. (%)">71.5</td></tr>
+              <tr><th scope="row">MobileNet V2</th><td data-label="Task">Classification</td><td data-label="Input">224×224</td><td class="num" data-label="Latency (ms)">1.19</td><td class="num" data-label="Util. (%)">24.6</td></tr>
+              <tr><th scope="row">MobileNet V3-Large</th><td data-label="Task">Classification</td><td data-label="Input">224×224</td><td class="num" data-label="Latency (ms)">1.28</td><td class="num" data-label="Util. (%)">16.7</td></tr>
+              <tr><th scope="row">MobileNet V3-Large</th><td data-label="Task">Classification</td><td data-label="Input">512×512</td><td class="num" data-label="Latency (ms)">6.93</td><td class="num" data-label="Util. (%)">15.9</td></tr>
+              <tr><th scope="row">MobileNet V3-Large (min)</th><td data-label="Task">Classification</td><td data-label="Input">224×224</td><td class="num" data-label="Latency (ms)">1.07</td><td class="num" data-label="Util. (%)">19.3</td></tr>
+              <tr><th scope="row">MobileNet V3-Large (min)</th><td data-label="Task">Classification</td><td data-label="Input">512×512</td><td class="num" data-label="Latency (ms)">6.27</td><td class="num" data-label="Util. (%)">17.1</td></tr>
+              <tr><th scope="row">EfficientNet-b0</th><td data-label="Task">Classification</td><td data-label="Input">224×224</td><td class="num" data-label="Latency (ms)">1.67</td><td class="num" data-label="Util. (%)">22.6</td></tr>
+              <tr><th scope="row">MobileNet v1-SSD</th><td data-label="Task">Detection</td><td data-label="Input">224×224</td><td class="num" data-label="Latency (ms)">1.32</td><td class="num" data-label="Util. (%)">50.7</td></tr>
+              <tr><th scope="row">MobileNet v1-SSD</th><td data-label="Task">Detection</td><td data-label="Input">300×300</td><td class="num" data-label="Latency (ms)">2.23</td><td class="num" data-label="Util. (%)">55.6</td></tr>
+              <tr><th scope="row">U-Net</th><td data-label="Task">Segmentation</td><td data-label="Input">128×128</td><td class="num" data-label="Latency (ms)">12.7</td><td class="num" data-label="Util. (%)">87.1</td></tr>
             </tbody>
           </table>
         </div>
@@ -471,9 +471,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">YOLOv4-tiny</th><td>Detection</td><td>416×416<sup class="perf-fn-mark">†</sup></td><td class="num">12.66</td><td class="num">70.6</td><td class="num">0.425</td><td class="num">1.81</td></tr>
-              <tr><th scope="row">DeepLabV3+</th><td>Segmentation</td><td>320×320<sup class="perf-fn-mark">†‡</sup></td><td class="num">27.79</td><td class="num">67.8</td><td class="num">0.404</td><td class="num">1.83</td></tr>
-              <tr><th scope="row">EfficientNet-b2</th><td>Classification</td><td>260×260<sup class="perf-fn-mark">†</sup></td><td class="num">11.13</td><td class="num">13.8</td><td class="num">0.225</td><td class="num">0.67</td></tr>
+              <tr><th scope="row">YOLOv4-tiny</th><td data-label="Task">Detection</td><td data-label="Input">416×416<sup class="perf-fn-mark">†</sup></td><td class="num" data-label="Latency (ms)">12.66</td><td class="num" data-label="Util. (%)">70.6</td><td class="num" data-label="Power (W)">0.425</td><td class="num" data-label="TOPS/W">1.81</td></tr>
+              <tr><th scope="row">DeepLabV3+</th><td data-label="Task">Segmentation</td><td data-label="Input">320×320<sup class="perf-fn-mark">†‡</sup></td><td class="num" data-label="Latency (ms)">27.79</td><td class="num" data-label="Util. (%)">67.8</td><td class="num" data-label="Power (W)">0.404</td><td class="num" data-label="TOPS/W">1.83</td></tr>
+              <tr><th scope="row">EfficientNet-b2</th><td data-label="Task">Classification</td><td data-label="Input">260×260<sup class="perf-fn-mark">†</sup></td><td class="num" data-label="Latency (ms)">11.13</td><td class="num" data-label="Util. (%)">13.8</td><td class="num" data-label="Power (W)">0.225</td><td class="num" data-label="TOPS/W">0.67</td></tr>
             </tbody>
           </table>
         </div>
@@ -502,9 +502,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">ViT-Base</th><td>Vision Transformer</td><td>224×224, 12 encoders @ 1 GHz</td><td class="num">21.60</td><td class="num">79.0</td></tr>
-              <tr><th scope="row">Gemma2-2b</th><td>LM, prefill (256 tok)</td><td>@ 500 MHz</td><td class="num">1127.71</td><td class="num">96.5</td></tr>
-              <tr><th scope="row">Gemma2-2b</th><td>LM, generation (KV 256)</td><td>@ 500 MHz</td><td class="num">143.33</td><td class="num">3.6</td></tr>
+              <tr><th scope="row">ViT-Base</th><td data-label="Task">Vision Transformer</td><td data-label="Input">224×224, 12 encoders @ 1 GHz</td><td class="num" data-label="Latency (ms)">21.60</td><td class="num" data-label="Util. (%)">79.0</td></tr>
+              <tr><th scope="row">Gemma2-2b</th><td data-label="Task">LM, prefill (256 tok)</td><td data-label="Input">@ 500 MHz</td><td class="num" data-label="Latency (ms)">1127.71</td><td class="num" data-label="Util. (%)">96.5</td></tr>
+              <tr><th scope="row">Gemma2-2b</th><td data-label="Task">LM, generation (KV 256)</td><td data-label="Input">@ 500 MHz</td><td class="num" data-label="Latency (ms)">143.33</td><td class="num" data-label="Util. (%)">3.6</td></tr>
             </tbody>
           </table>
         </div>
