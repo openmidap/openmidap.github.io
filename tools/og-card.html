@@ -1,0 +1,57 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { position:relative;
+    width:1200px; height:630px; overflow:hidden;
+    font-family:'Inter','Segoe UI',-apple-system,'DejaVu Sans',sans-serif;
+    background:#0f172a;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 85% 110%, rgba(37,99,235,0.28), transparent 60%),
+      radial-gradient(ellipse 700px 400px at -5% -10%, rgba(14,165,233,0.16), transparent 55%);
+    color:#fff; display:flex; align-items:stretch;
+  }
+  .left { flex:1.3; padding:52px 16px 44px 56px; display:flex; flex-direction:column; }
+  .badge {
+    align-self:flex-start; padding:8px 18px; border-radius:999px; white-space:nowrap;
+    background:#2563eb; font-size:17px; font-weight:700; letter-spacing:0.04em;
+    text-transform:uppercase; margin-bottom:30px;
+  }
+  h1 { font-size:92px; font-weight:800; line-height:1; letter-spacing:-0.01em; margin-bottom:18px; }
+  .sub { font-size:27px; font-weight:600; line-height:1.32; color:#cbd5e1; max-width:560px; margin-bottom:28px; }
+  .chips { display:flex; flex-wrap:wrap; gap:10px; max-width:580px; }
+  .chip {
+    padding:8px 16px; border:2px solid rgba(148,163,184,0.45); border-radius:999px;
+    font-size:17px; font-weight:600; color:#e2e8f0; background:rgba(15,23,42,0.5); white-space:nowrap;
+  }
+  .chip b { color:#60a5fa; font-weight:700; }
+  .foot { position:absolute; left:56px; bottom:40px; font-size:18px; font-weight:600; color:#94a3b8; white-space:nowrap; }
+  .foot b { color:#e2e8f0; }
+  .right { flex:1; display:flex; align-items:center; justify-content:center; padding:44px 48px 44px 4px; }
+  .shot {
+    background:#fff; border-radius:16px; padding:15px;
+    box-shadow:0 24px 70px rgba(0,0,0,0.45), 0 0 0 1px rgba(148,163,184,0.25);
+    transform:rotate(1.5deg);
+  }
+  .shot img { display:block; width:410px; height:auto; }
+</style></head>
+<body>
+  <div class="left">
+    <div class="badge">DAC 2026 · University Demonstration</div>
+    <h1>MIDAP</h1>
+    <div class="sub">A Full-Stack Open NPU Platform for Embedded AI Exploration</div>
+    <div class="chips">
+      <div class="chip"><b>MLIR</b> compiler</div>
+      <div class="chip"><b>Cycle-accurate</b> simulator</div>
+      <div class="chip"><b>FPGA-validated</b> RTL</div>
+    </div>
+  </div>
+  <div class="right"><div class="shot"><img src="../static/images/architecture.png"></div></div>
+  <div class="foot"><b>openmidap.github.io</b> · CAP Lab, Seoul National University</div>
+</body></html>
+<!-- Social-card source (WEB-001). Regenerate og-card.png with:
+  google-chrome --headless=new --disable-gpu --window-size=1200,800 \
+    --force-device-scale-factor=1 --screenshot=og-raw.png "file://$PWD/tools/og-card.html"
+  then crop to 1200x630 (this Chrome build under-paints the bottom ~90px of the
+  declared window, so render taller and crop):
+  python3 -c "from PIL import Image; Image.open('og-raw.png').crop((0,0,1200,630)).convert('RGB').save('static/images/og-card.png', optimize=True)"
+-->

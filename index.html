@@ -4,64 +4,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
-  <meta name="description" content="MIDAP: an open adder-tree NPU platform that keeps feature maps on-chip via SRAM in the datapath — with an MLIR compiler, cycle-accurate simulator, and FPGA-validated RTL for embedded CNN inference.">
-  <meta name="keywords" content="NPU, CNN accelerator, adder-tree, deep learning accelerator, embedded AI, MLIR compiler, cycle-accurate simulator, RTL, FPGA, SRAM datapath, tensor virtualization">
+  <meta name="description" content="MIDAP is an open-source NPU platform: adder-tree CNN accelerator with an MLIR compiler, cycle-accurate simulator, and FPGA-validated RTL for embedded AI.">
+  <meta name="keywords" content="NPU, neural processing unit, open-source NPU, NPU simulator, CNN accelerator, CNN accelerator RTL, adder-tree, deep learning accelerator, embedded AI, MLIR compiler, cycle-accurate simulator, RTL, FPGA, SRAM datapath, tensor virtualization">
   <meta name="robots" content="index, follow">
-  <meta name="language" content="English">
 
   <meta name="google-site-verification" content="iQ9bUsZCxR4jG-ISlW85LsELpBdE8vcMtyw1T3hX8YI">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="CAP Lab · Seoul National University">
+  <meta property="og:locale" content="en_US">
   <meta property="og:title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
   <meta property="og:description" content="An open adder-tree NPU platform with SRAM in the datapath, a full compiler + cycle-accurate simulator, and FPGA-validated RTL. DAC 2026 University Demonstration.">
   <meta property="og:url" content="https://openmidap.github.io/">
+  <meta property="og:image" content="https://openmidap.github.io/static/images/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration — compiler, cycle-accurate simulator, FPGA-validated RTL. DAC 2026.">
   <link rel="canonical" href="https://openmidap.github.io/">
 
   <meta name="twitter:card" content="summary_large_image">
-  
   <meta name="twitter:title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
   <meta name="twitter:description" content="Adder-tree NPU with SRAM in the datapath, full compiler + cycle-accurate simulator, FPGA-validated RTL. DAC 2026 University Demonstration.">
+  <meta name="twitter:image" content="https://openmidap.github.io/static/images/og-card.png">
+  <meta name="twitter:image:alt" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration — compiler, cycle-accurate simulator, FPGA-validated RTL. DAC 2026.">
 
   <meta name="citation_title" content="MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration">
+  <meta name="citation_author" content="Changjae Yi">
+  <meta name="citation_author" content="Hyunsu Moh">
+  <meta name="citation_author" content="Seongwoo Choi">
+  <meta name="citation_author" content="Joon Choi">
+  <meta name="citation_author" content="Youngchul Yoon">
+  <meta name="citation_author" content="Soonhoi Ha">
   <meta name="citation_publication_date" content="2026">
   <meta name="citation_conference_title" content="Design Automation Conference (DAC) — University Demonstration">
+  <meta name="citation_pdf_url" content="https://openmidap.github.io/static/pdfs/poster.pdf">
 
   <meta name="theme-color" content="#2563eb">
-  <meta name="msapplication-TileColor" content="#2563eb">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://ajax.googleapis.com">
 
-  <title>MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration | DAC 2026</title>
+  <title>MIDAP: Open NPU Platform for Embedded AI | DAC 2026</title>
 
   <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
-  <link rel="apple-touch-icon" href="static/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32.png">
+  <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
 
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-
-  <noscript>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  </noscript>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/bulma-carousel.min.js"></script>
-  <script defer src="static/js/bulma-slider.min.js"></script>
   <script defer src="static/js/index.js"></script>
+  <noscript><style>.fspanel { display: none; }</style></noscript>
 
   <script type="application/ld+json">
   {
@@ -69,43 +64,96 @@
     "@type": "SoftwareSourceCode",
     "name": "MIDAP: A Full-Stack Open NPU Platform for Embedded AI Exploration",
     "description": "An open adder-tree NPU platform with SRAM in the datapath, a full MLIR compiler, a cycle-accurate simulator, and FPGA-validated RTL for embedded CNN inference.",
+    "url": "https://openmidap.github.io/",
+    "image": "https://openmidap.github.io/static/images/og-card.png",
     "programmingLanguage": ["Python", "C++", "MLIR", "SystemVerilog"],
-    "publisher": {"@type": "Organization", "name": "CAP Lab, Seoul National University"},
-    "keywords": ["NPU", "CNN accelerator", "adder-tree", "MLIR", "cycle-accurate simulator", "RTL", "FPGA", "embedded AI"],
-    "license": "https://creativecommons.org/licenses/by-sa/4.0/"
+    "author": {"@type": "Organization", "name": "CAP Lab, Seoul National University", "url": "https://peace.snu.ac.kr"},
+    "publisher": {"@type": "Organization", "name": "CAP Lab, Seoul National University", "url": "https://peace.snu.ac.kr"},
+    "codeRepository": "https://github.com/openmidap",
+    "keywords": ["NPU", "neural processing unit", "open-source NPU", "NPU simulator", "CNN accelerator", "adder-tree", "MLIR", "cycle-accurate simulator", "RTL", "FPGA", "embedded AI"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is MIDAP open source?",
+        "acceptedAnswer": {"@type": "Answer", "text": "MIDAP is an open NPU (neural processing unit) platform developed by the CAP Lab at Seoul National University. A public open-source release of the full stack — MLIR compiler, cycle-accurate simulator, and RTL — is planned for H1 2027. Join the waitlist to be notified when it lands at github.com/openmidap."}
+      },
+      {
+        "@type": "Question",
+        "name": "Does MIDAP include an NPU simulator?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. The platform includes a cycle-accurate NPU simulator that models the datapath, DRAM traffic, and stalls to report end-to-end latency and bottlenecks, plus a low-level simulator that executes the hardware microcode, with Perfetto-compatible trace export."}
+      },
+      {
+        "@type": "Question",
+        "name": "Is the CNN accelerator RTL validated on an FPGA?",
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes. The CNN accelerator RTL is an FPGA-oriented SoC with an IBEX RISC-V control core and AXI/APB interfaces, validated on a Xilinx KCU1500. The RTL is not tied to any specific board or simulator."}
+      }
+    ]
   }
   </script>
 
   <!-- Cookieless, aggregate-only visit counts (see privacy.html) -->
   <script data-goatcounter="https://openmidap.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+          async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- Inline icon sprite (Font Awesome 5.15.1 path data, CC BY 4.0) — replaces the
+       former 1.17 MB fontawesome.all.min.js + fontawesome.all.min.css double delivery. -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-chevron-up" viewBox="0 0 448 512"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 448 512"><path fill="currentColor" d="M439.39 362.29c-19.32-20.76-55.47-51.99-55.47-154.29 0-77.7-54.48-139.9-127.94-155.16V32c0-17.67-14.32-32-31.98-32s-31.98 14.33-31.98 32v20.84C118.56 68.1 64.08 130.3 64.08 208c0 102.3-36.15 133.53-55.47 154.29-6 6.45-8.66 14.16-8.61 21.71.11 16.4 12.98 32 32.1 32h383.8c19.12 0 32-15.6 32.1-32 .05-7.55-2.61-15.27-8.61-21.71zM67.53 368c21.22-27.97 44.42-74.33 44.53-159.42 0-.2-.06-.38-.06-.58 0-61.86 50.14-112 112-112s112 50.14 112 112c0 .2-.06.38-.06.58.11 85.1 23.31 131.46 44.53 159.42H67.53zM224 512c35.32 0 63.97-28.65 63.97-64H160.03c0 35.35 28.65 64 63.97 64z"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 448 512"><path fill="currentColor" d="M437.2 403.5L320 215V64h8c13.3 0 24-10.7 24-24V24c0-13.3-10.7-24-24-24H120c-13.3 0-24 10.7-24 24v16c0 13.3 10.7 24 24 24h8v151L10.8 403.5C-18.5 450.6 15.3 512 70.9 512h306.2c55.7 0 89.4-61.5 60.1-108.5zM137.9 320l48.2-77.6c3.7-5.2 5.8-11.6 5.8-18.4V64h64v160c0 6.9 2.2 13.2 5.8 18.4l48.2 77.6h-172z"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 448 512"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"/></symbol>
+    <symbol id="i-times" viewBox="0 0 352 512"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"/></symbol>
+    <symbol id="i-external-link" viewBox="0 0 512 512"><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z"/></symbol>
+    <symbol id="i-microchip" viewBox="0 0 512 512"><path fill="currentColor" d="M416 48v416c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V48c0-26.51 21.49-48 48-48h224c26.51 0 48 21.49 48 48zm96 58v12a6 6 0 0 1-6 6h-18v6a6 6 0 0 1-6 6h-42V88h42a6 6 0 0 1 6 6v6h18a6 6 0 0 1 6 6zm0 96v12a6 6 0 0 1-6 6h-18v6a6 6 0 0 1-6 6h-42v-48h42a6 6 0 0 1 6 6v6h18a6 6 0 0 1 6 6zm0 96v12a6 6 0 0 1-6 6h-18v6a6 6 0 0 1-6 6h-42v-48h42a6 6 0 0 1 6 6v6h18a6 6 0 0 1 6 6zm0 96v12a6 6 0 0 1-6 6h-18v6a6 6 0 0 1-6 6h-42v-48h42a6 6 0 0 1 6 6v6h18a6 6 0 0 1 6 6zM30 376h42v48H30a6 6 0 0 1-6-6v-6H6a6 6 0 0 1-6-6v-12a6 6 0 0 1 6-6h18v-6a6 6 0 0 1 6-6zm0-96h42v48H30a6 6 0 0 1-6-6v-6H6a6 6 0 0 1-6-6v-12a6 6 0 0 1 6-6h18v-6a6 6 0 0 1 6-6zm0-96h42v48H30a6 6 0 0 1-6-6v-6H6a6 6 0 0 1-6-6v-12a6 6 0 0 1 6-6h18v-6a6 6 0 0 1 6-6zm0-96h42v48H30a6 6 0 0 1-6-6v-6H6a6 6 0 0 1-6-6v-12a6 6 0 0 1 6-6h18v-6a6 6 0 0 1 6-6z"/></symbol>
+    <symbol id="i-file-pdf" viewBox="0 0 384 512"><path fill="currentColor" d="M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48zm250.2-143.7c-12.2-12-47-8.7-64.4-6.5-17.2-10.5-28.7-25-36.8-46.3 3.9-16.1 10.1-40.6 5.4-56-4.2-26.2-37.8-23.6-42.6-5.9-4.4 16.1-.4 38.5 7 67.1-10 23.9-24.9 56-35.4 74.4-20 10.3-47 26.2-51 46.2-3.3 15.8 26 55.2 76.1-31.2 22.4-7.4 46.8-16.5 68.4-20.1 18.9 10.2 41 17 55.8 17 25.5 0 28-28.2 17.5-38.7zm-198.1 77.8c5.1-13.7 24.5-29.5 30.4-35-19 30.3-30.4 35.7-30.4 35zm81.6-190.6c7.4 0 6.7 32.1 1.8 40.8-4.4-13.9-4.3-40.8-1.8-40.8zm-24.4 136.6c9.7-16.9 18-37 24.7-54.7 8.3 15.1 18.9 27.2 30.1 35.5-20.8 4.3-38.9 13.1-54.8 19.2zm131.6-5s-5 6-37.3-7.8c35.1-2.6 40.9 5.4 37.3 7.8z"/></symbol>
+    <symbol id="i-file-powerpoint" viewBox="0 0 384 512"><path fill="currentColor" d="M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48zm72-60V236c0-6.6 5.4-12 12-12h69.2c36.7 0 62.8 27 62.8 66.3 0 74.3-68.7 66.5-95.5 66.5V404c0 6.6-5.4 12-12 12H132c-6.6 0-12-5.4-12-12zm48.5-87.4h23c7.9 0 13.9-2.4 18.1-7.2 8.5-9.8 8.4-28.5.1-37.8-4.1-4.6-9.9-7-17.4-7h-23.9v52z"/></symbol>
+    <symbol id="i-image" viewBox="0 0 512 512"><path fill="currentColor" d="M464 64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 336H54a6 6 0 0 1-6-6V118a6 6 0 0 1 6-6h404a6 6 0 0 1 6 6v276a6 6 0 0 1-6 6zM128 152c-22.091 0-40 17.909-40 40s17.909 40 40 40 40-17.909 40-40-17.909-40-40-40zM96 352h320v-80l-87.515-87.515c-4.686-4.686-12.284-4.686-16.971 0L192 304l-39.515-39.515c-4.686-4.686-12.284-4.686-16.971 0L96 304v48z"/></symbol>
+    <symbol id="i-user-plus" viewBox="0 0 640 512"><path fill="currentColor" d="M624 208h-64v-64c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v64h-64c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h64v64c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-64h64c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16zm-400 48c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></symbol>
+    <symbol id="i-memory" viewBox="0 0 640 512"><path fill="currentColor" d="M640 130.94V96c0-17.67-14.33-32-32-32H32C14.33 64 0 78.33 0 96v34.94c18.6 6.61 32 24.19 32 45.06s-13.4 38.45-32 45.06V320h640v-98.94c-18.6-6.61-32-24.19-32-45.06s13.4-38.45 32-45.06zM224 256h-64V128h64v128zm128 0h-64V128h64v128zm128 0h-64V128h64v128zM0 448h64v-26.67c0-8.84 7.16-16 16-16s16 7.16 16 16V448h128v-26.67c0-8.84 7.16-16 16-16s16 7.16 16 16V448h128v-26.67c0-8.84 7.16-16 16-16s16 7.16 16 16V448h128v-26.67c0-8.84 7.16-16 16-16s16 7.16 16 16V448h64v-96H0v96z"/></symbol>
+    <symbol id="i-layer-group" viewBox="0 0 512 512"><path fill="currentColor" d="M12.41 148.02l232.94 105.67c6.8 3.09 14.49 3.09 21.29 0l232.94-105.67c16.55-7.51 16.55-32.52 0-40.03L266.65 2.31a25.607 25.607 0 0 0-21.29 0L12.41 107.98c-16.55 7.51-16.55 32.53 0 40.04zm487.18 88.28l-58.09-26.33-161.64 73.27c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.51 209.97l-58.1 26.33c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 276.3c16.55-7.5 16.55-32.5 0-40zm0 127.8l-57.87-26.23-161.86 73.37c-7.56 3.43-15.59 5.17-23.86 5.17s-16.29-1.74-23.86-5.17L70.29 337.87 12.41 364.1c-16.55 7.5-16.55 32.5 0 40l232.94 105.59c6.8 3.08 14.49 3.08 21.29 0L499.59 404.1c16.55-7.5 16.55-32.5 0-40z"/></symbol>
+    <symbol id="i-object-group" viewBox="0 0 512 512"><path fill="currentColor" d="M500 128c6.627 0 12-5.373 12-12V44c0-6.627-5.373-12-12-12h-72c-6.627 0-12 5.373-12 12v12H96V44c0-6.627-5.373-12-12-12H12C5.373 32 0 37.373 0 44v72c0 6.627 5.373 12 12 12h12v256H12c-6.627 0-12 5.373-12 12v72c0 6.627 5.373 12 12 12h72c6.627 0 12-5.373 12-12v-12h320v12c0 6.627 5.373 12 12 12h72c6.627 0 12-5.373 12-12v-72c0-6.627-5.373-12-12-12h-12V128h12zm-52-64h32v32h-32V64zM32 64h32v32H32V64zm32 384H32v-32h32v32zm416 0h-32v-32h32v32zm-40-64h-12c-6.627 0-12 5.373-12 12v12H96v-12c0-6.627-5.373-12-12-12H72V128h12c6.627 0 12-5.373 12-12v-12h320v12c0 6.627 5.373 12 12 12h12v256zm-36-192h-84v-52c0-6.628-5.373-12-12-12H108c-6.627 0-12 5.372-12 12v168c0 6.628 5.373 12 12 12h84v52c0 6.628 5.373 12 12 12h200c6.627 0 12-5.372 12-12V204c0-6.628-5.373-12-12-12zm-268-24h144v112H136V168zm240 176H232v-24h76c6.627 0 12-5.372 12-12v-76h56v112z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 640 512"><path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/></symbol>
+    <symbol id="i-gauge" viewBox="0 0 576 512"><path fill="currentColor" d="M288 32C128.94 32 0 160.94 0 320c0 52.8 14.25 102.26 39.06 144.8 5.61 9.62 16.3 15.2 27.44 15.2h443c11.14 0 21.83-5.58 27.44-15.2C561.75 422.26 576 372.8 576 320c0-159.06-128.94-288-288-288zm0 64c14.71 0 26.58 10.13 30.32 23.65-1.11 2.26-2.64 4.23-3.45 6.67l-9.22 27.67c-5.13 3.49-10.97 6.01-17.64 6.01-17.67 0-32-14.33-32-32S270.33 96 288 96zM96 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm48-160c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32zm246.77-72.41l-61.33 184C343.13 347.33 352 364.54 352 384c0 11.72-3.38 22.55-8.88 32H232.88c-5.5-9.45-8.88-20.28-8.88-32 0-33.94 26.5-61.43 59.9-63.59l61.34-184.01c4.17-12.56 17.73-19.45 30.36-15.17 12.57 4.19 19.35 17.79 15.17 30.36zm14.66 57.2l15.52-46.55c3.47-1.29 7.13-2.23 11.05-2.23 17.67 0 32 14.33 32 32s-14.33 32-32 32c-11.38-.01-20.89-6.28-26.57-15.22zM480 384c-17.67 0-32-14.33-32-32s14.33-32 32-32 32 14.33 32 32-14.33 32-32 32z"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 448 512"><path fill="currentColor" d="M433.941 65.941l-51.882-51.882A48 48 0 0 0 348.118 0H176c-26.51 0-48 21.49-48 48v48H48c-26.51 0-48 21.49-48 48v320c0 26.51 21.49 48 48 48h224c26.51 0 48-21.49 48-48v-48h80c26.51 0 48-21.49 48-48V99.882a48 48 0 0 0-14.059-33.941zM266 464H54a6 6 0 0 1-6-6V150a6 6 0 0 1 6-6h74v224c0 26.51 21.49 48 48 48h96v42a6 6 0 0 1-6 6zm128-96H182a6 6 0 0 1-6-6V54a6 6 0 0 1 6-6h106v88c0 13.255 10.745 24 24 24h88v202a6 6 0 0 1-6 6zm6-256h-64V48h9.632c1.591 0 3.117.632 4.243 1.757l48.368 48.368a6 6 0 0 1 1.757 4.243V112z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 496 512"><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></symbol>
+  </svg>
+
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
-    <i class="fas fa-chevron-up"></i>
+    <svg class="fai" aria-hidden="true"><use href="#i-chevron-up"/></svg>
   </button>
 
   <div class="floating-actions">
 
     <div class="waitlist-container">
       <button class="waitlist-btn" onclick="openWaitlist()" title="Join the release waitlist">
-        <i class="fas fa-bell"></i>
+        <svg class="fai" aria-hidden="true"><use href="#i-bell"/></svg>
         Join Waitlist
       </button>
     </div>
 
   <div class="more-works-container">
-    <button class="more-works-btn" onclick="toggleMoreWorks()" title="MIDAP reference papers">
-      <i class="fas fa-flask"></i>
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="MIDAP reference papers"
+            aria-haspopup="true" aria-expanded="false" aria-controls="moreWorksDropdown">
+      <svg class="fai" aria-hidden="true"><use href="#i-flask"/></svg>
       Papers
-      <i class="fas fa-chevron-down dropdown-arrow"></i>
+      <svg class="fai dropdown-arrow" aria-hidden="true"><use href="#i-chevron-down"/></svg>
     </button>
     <div class="more-works-dropdown" id="moreWorksDropdown">
       <div class="dropdown-header">
         <h4>MIDAP reference papers</h4>
-        <button class="close-btn" onclick="toggleMoreWorks()">
-          <i class="fas fa-times"></i>
+        <button class="close-btn" onclick="toggleMoreWorks()" aria-label="Close papers list">
+          <svg class="fai" aria-hidden="true"><use href="#i-times"/></svg>
         </button>
       </div>
       <div class="works-list">
@@ -115,7 +163,7 @@
             <p>Donghyun Kang, Jintaek Kang, Hyungdal Kwon, Hyunsik Park, and Soonhoi Ha</p>
             <span class="work-venue">37th IEEE International Conference on Computer Design (ICCD), Nov. 2019</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
         <a href="https://ieeexplore.ieee.org/document/9218726" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
@@ -123,7 +171,7 @@
             <p>Donghyun Kang and Soonhoi Ha</p>
             <span class="work-venue">Design Automation Conference (DAC), Jul. 2020</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
         <a href="https://dcollection.snu.ac.kr/common/orgView/000000170604" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
@@ -131,7 +179,7 @@
             <p>Donghyun Kang</p>
             <span class="work-venue">Ph.D. dissertation, Dept. of Computer Science and Engineering, Seoul National University, Feb. 2022</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
         <a href="https://ieeexplore.ieee.org/document/9996680" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
@@ -139,7 +187,7 @@
             <p>Changjae Yi, Donghyun Kang, and Soonhoi Ha</p>
             <span class="work-venue">25th Euromicro Conference on Digital System Design (DSD), Sep. 2022</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
         <a href="https://ieeexplore.ieee.org/document/9729831" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
@@ -147,7 +195,7 @@
             <p>Donghyun Kang and Soonhoi Ha</p>
             <span class="work-venue">IEEE Design &amp; Test, vol. 39, no. 5, pp. 54&ndash;61, Oct. 2022</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
         <a href="https://dl.acm.org/doi/10.1145/3625223.3649265" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
@@ -155,15 +203,15 @@
             <p>Choonghoon Park, Hyunsu Moh, Jimin Lee, Changjae Yi, and Soonhoi Ha</p>
             <span class="work-venue">34th International Workshop on Rapid System Prototyping (RSP), Sep. 2023</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
         <a href="https://ieeexplore.ieee.org/document/10818138" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
             <h5>Vision Transformer Inference on a CNN Accelerator</h5>
             <p>Changjae Yi, Hyunsu Moh, and Soonhoi Ha</p>
-            <span class="work-venue">IEEE 42nd International Conference on Computer Design (ICCD), Jan. 2025</span>
+            <span class="work-venue">42nd IEEE International Conference on Computer Design (ICCD 2024)</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
         <a href="https://ieeexplore.ieee.org/document/11240951" class="work-item" target="_blank" rel="noopener">
           <div class="work-info">
@@ -171,7 +219,7 @@
             <p>Seongwoo Choi, Hyunsu Moh, Changjae Yi, Joon Choi, and Soonhoi Ha</p>
             <span class="work-venue">International Conference on Computer-Aided Design (ICCAD), Nov. 2025</span>
           </div>
-          <i class="fas fa-external-link-alt"></i>
+          <svg class="fai work-ext" aria-hidden="true"><use href="#i-external-link"/></svg>
         </a>
       </div>
     </div>
@@ -187,16 +235,27 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
 
-            <span class="dac-badge"><i class="fas fa-microchip"></i>DAC 2026 · University Demonstration</span>
+            <span class="dac-badge"><svg class="fai" aria-hidden="true"><use href="#i-microchip"/></svg>DAC 2026 · University Demonstration</span>
 
-            <h1 class="title is-1 publication-title">MIDAP</h1>
-            <p class="is-size-4" style="margin-top:-0.4rem;color:var(--text-secondary);font-weight:600;">
-              A Full-Stack Open NPU Platform for Embedded AI Exploration
-            </p>
+            <h1 class="title is-1 publication-title">MIDAP
+              <span class="publication-subtitle">A Full-Stack Open NPU Platform for Embedded AI Exploration</span>
+            </h1>
 
             <p class="hero-tagline">
-              <strong>MIDAP</strong> (Memory In the Datapath Architecture Processor) is a
-              high-performance, <span class="accent">adder-tree based CNN accelerator</span>.
+              <strong>MIDAP</strong> (Memory In the Datapath Architecture Processor) is an
+              open-source NPU (neural processing unit) platform built around a high-performance,
+              <span class="accent">adder-tree based CNN accelerator</span>.
+            </p>
+
+            <p class="hero-stack" aria-label="What the full stack includes">
+              <span class="hero-stack-chip"><svg class="fai" aria-hidden="true"><use href="#i-code"/></svg>MLIR compiler</span>
+              <span class="hero-stack-chip"><svg class="fai" aria-hidden="true"><use href="#i-gauge"/></svg>Cycle-accurate NPU simulator</span>
+              <span class="hero-stack-chip"><svg class="fai" aria-hidden="true"><use href="#i-microchip"/></svg>FPGA-validated CNN accelerator RTL</span>
+            </p>
+
+            <p class="hero-status">
+              <span class="pill soon">Public release planned for H1 2027</span>
+              <a href="#" onclick="openWaitlist(); return false;">Join the waitlist</a> to be notified.
             </p>
 
             <div class="is-size-6 publication-authors" style="margin-top:1.4rem;">
@@ -206,36 +265,40 @@
             <!-- ==================== LINK BUTTONS (public actions + waitlist) ==================== -->
             <div class="column has-text-centered" style="margin-top:1.5rem;">
               <div class="publication-links">
-                
+
                 <span class="link-block">
-                  <a href="#" onclick="event.stopPropagation(); toggleMoreWorks(); return false;" class="external-link button is-normal is-rounded is-dark" title="MIDAP reference papers">
-                    <span class="icon"><i class="fas fa-file-pdf"></i></span><span>Paper</span>
+                  <a href="#" onclick="event.stopPropagation(); toggleMoreWorks(); return false;" class="external-link button is-normal is-rounded is-dark" title="MIDAP reference papers"
+                     aria-haspopup="true" aria-controls="moreWorksDropdown">
+                    <span class="icon"><svg class="fai" aria-hidden="true"><use href="#i-file-pdf"/></svg></span><span>Papers</span>
                   </a>
                 </span>
-                
+
                 <span class="link-block">
                   <a href="static/pdfs/slides.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-file-powerpoint"></i></span><span>Slides</span>
+                    <span class="icon"><svg class="fai" aria-hidden="true"><use href="#i-file-powerpoint"/></svg></span><span>Slides</span>
                   </a>
                 </span>
-                
+
                 <span class="link-block">
                   <a href="static/pdfs/poster.pdf" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-image"></i></span><span>Poster</span>
+                    <span class="icon"><svg class="fai" aria-hidden="true"><use href="#i-image"/></svg></span><span>Poster</span>
                   </a>
                 </span>
                 <span class="link-block">
-                  <a href="#" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-video"></i></span><span>Demo</span>
+                  <a href="https://github.com/openmidap" target="_blank" rel="noopener" class="external-link button is-normal is-rounded is-dark" title="MIDAP on GitHub">
+                    <span class="icon"><svg class="fai" aria-hidden="true"><use href="#i-github"/></svg></span><span>GitHub</span>
                   </a>
                 </span>
+                <!-- Demo button hidden until the demo video exists (WEB-003 decision, 2026-08-06).
+                     Restore as: <a href="DEMO_URL" ...><span class="icon"><svg class="fai" aria-hidden="true"><use href="#i-video"/></svg></span><span>Demo</span></a>
+                     (re-add an i-video symbol to the sprite when doing so). -->
                 <span class="link-block">
                   <a href="#" onclick="openWaitlist(); return false;" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fas fa-user-plus"></i></span><span>Join Waitlist</span>
+                    <span class="icon"><svg class="fai" aria-hidden="true"><use href="#i-user-plus"/></svg></span><span>Join Waitlist</span>
                   </a>
                 </span>
               </div>
-              
+
             </div>
 
           </div>
@@ -249,27 +312,33 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Architecture</h2>
       <p class="section-lead has-text-centered">
-        It is engineered to maximize throughput-per-watt by minimizing DRAM access overhead.
+        MIDAP is engineered to maximize throughput-per-watt by minimizing DRAM access overhead.
       </p>
 
       <div class="arch-cards">
         <div class="arch-card">
-          <h3><i class="fas fa-memory"></i>Integrated SRAM</h3>
-          <p>Dedicated memory within the datapath for ultra-low latency.</p>
+          <h3><svg class="fai" aria-hidden="true"><use href="#i-memory"/></svg>Integrated SRAM</h3>
+          <p>SRAM sits inside the datapath itself, so compute reads operands at
+            on-chip latency instead of waiting on a shared bus or DRAM.</p>
         </div>
         <div class="arch-card">
-          <h3><i class="fas fa-layer-group"></i>Multi-bank FMEM</h3>
-          <p>Efficient inter-layer data reuse.</p>
+          <h3><svg class="fai" aria-hidden="true"><use href="#i-layer-group"/></svg>Multi-bank FMEM</h3>
+          <p>A multi-bank feature-map memory (FMEM) keeps one layer's output on chip
+            to be reused as the next layer's input — no DRAM round-trip between layers.</p>
         </div>
         <div class="arch-card">
-          <h3><i class="fas fa-object-group"></i>Fused Architecture</h3>
-          <p>Unified pipeline for convolution, activation, and reduction.</p>
+          <h3><svg class="fai" aria-hidden="true"><use href="#i-object-group"/></svg>Fused Architecture</h3>
+          <p>Convolution, activation, and reduction run back-to-back in one unified
+            pipeline, so intermediate results never leave the datapath.</p>
         </div>
       </div>
 
       <figure class="midap-figure">
-        <img src="static/images/architecture.png"
-             alt="MIDAP adder-tree NPU core with SRAM placed in the datapath and multi-bank on-chip memory">
+        <picture>
+          <source srcset="static/images/architecture.webp" type="image/webp">
+          <img src="static/images/architecture.png" width="644" height="561" loading="lazy" decoding="async"
+               alt="MIDAP adder-tree NPU core with SRAM placed in the datapath and multi-bank on-chip memory">
+        </picture>
         <figcaption>Adder-tree compute core with SRAM in the datapath and bus-free multi-bank on-chip memory.</figcaption>
       </figure>
     </div>
@@ -282,8 +351,8 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Why MIDAP</h2>
       <p class="section-lead has-text-centered">
-        Two advantages define MIDAP: <strong>end-to-end execution</strong> — the entire network runs on
-        one accelerator — and <strong>diverse model support</strong> on that same accelerator.
+        Two advantages define MIDAP: <strong>end-to-end execution</strong> and
+        <strong>diverse model support</strong> — both on a single accelerator.
       </p>
 
       <div class="adv-card">
@@ -309,6 +378,7 @@
           <li>Nearest-Neighbor Upsampling</li>
           <li>Bilinear Upsampling</li>
           <li>Implicit Transpose</li>
+          <li class="op-more">…and more</li>
         </ul>
         <p class="adv-foot">
           Coverage comes from the native datapath, CIM and reduction-module datapath extensions,
@@ -347,47 +417,46 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Full-stack flow</h2>
       <p class="section-lead has-text-centered">
-        A single quantized ONNX model runs end to end, compiled to Fused IR, L1 and L2 instructions, then to
-        hardware microcode, and executed at every level. <strong>Hover, tap or focus any box</strong> to
-        highlight its inputs and outputs and read what it does.
+        A single quantized ONNX model is compiled step by step — Fused IR, L1 and L2 instructions,
+        then hardware microcode — and executed and cross-validated at every level, from the
+        cycle-accurate simulator down to RTL simulation and the FPGA.
+        <strong>Hover, tap or focus any box</strong> to highlight its inputs and outputs and read what it does.
       </p>
 
       <div class="fsflow">
-        <div class="fsflow-board" id="fsflow" role="img"
-             aria-label="MIDAP full-stack flow. A quantized ONNX model is compiled by MIDAP HLC through ONNX-to-TOSA and operator fusion, op tiling and memory compile, and L1-to-L2 lowering into the L2 instruction stream; codegen then lowers L2 to microcode. The L2 instruction stream is run by the Python HL simulator, and the microcode is run by the Python LL simulator, the RTL simulator, and the FPGA.">
+        <div class="fsflow-board" id="fsflow" role="group"
+             aria-label="MIDAP full-stack flow diagram. A quantized ONNX model is compiled by MIDAP HLC through ONNX-to-TOSA and operator fusion, op tiling and memory compile, and L1-to-L2 lowering into the L2 instruction stream; codegen then lowers L2 to microcode. The L2 instruction stream is run by the Python HL simulator, and the microcode is run by the Python LL simulator, the RTL simulator, and the FPGA. Each stage below is a focusable button with its own description.">
           <noscript>
-            <img src="static/images/midap-end-to-end-workflow.png"
+            <img src="static/images/midap-end-to-end-workflow.png" width="1536" height="865" loading="lazy" decoding="async"
                  alt="MIDAP end-to-end workflow: a quantized ONNX model is compiled by MIDAP HLC into L1 and L2 instructions and microcode, then executed and cross-validated on the HL simulator, LL simulator, RTL simulator and FPGA.">
           </noscript>
         </div>
-        <aside class="fspanel" id="fspanel"></aside>
+        <aside class="fspanel" id="fspanel" aria-live="polite"></aside>
       </div>
 
       <div class="arch-cards">
         <div class="arch-card">
-          <h3><i class="fas fa-code"></i>Compiler</h3>
+          <h3><svg class="fai" aria-hidden="true"><use href="#i-code"/></svg>Compiler</h3>
           <ul>
-            <li><strong>In:</strong> Quantized ONNX (→ TOSA)</li>
+            <li><strong>In:</strong> Quantized ONNX (→ TOSA), via the MLIR compiler (MIDAP HLC)</li>
             <li><strong>Passes:</strong> op-fuse → tile → memory-compile → L1-to-L2 lowering</li>
             <li><strong>Out:</strong> L1 inst. (tile-level, bank-aware), L2 inst. (<code>config/run/wait</code>)</li>
           </ul>
         </div>
         <div class="arch-card">
-          <h3><i class="fas fa-gauge-high"></i>Simulator</h3>
+          <h3><svg class="fai" aria-hidden="true"><use href="#i-gauge"/></svg>Simulator</h3>
           <ul>
-            <li><strong>Accuracy:</strong> cycle-accurate, end-to-end latency including DRAM overhead</li>
+            <li><strong>Accuracy:</strong> a cycle-accurate NPU simulator — end-to-end latency including DRAM overhead</li>
             <li><strong>Levels:</strong> high-level (performance &amp; bottlenecks) + low-level (runs microcode)</li>
             <li><strong>Tracing:</strong> Perfetto-compatible export for DMA and core-stall analysis</li>
-            
           </ul>
         </div>
         <div class="arch-card">
-          <h3><i class="fas fa-microchip"></i>RTL</h3>
+          <h3><svg class="fai" aria-hidden="true"><use href="#i-microchip"/></svg>RTL</h3>
           <ul>
-            <li>FPGA-oriented SoC with an IBEX RISC-V control core</li>
+            <li>CNN accelerator RTL: an FPGA-oriented SoC with an IBEX RISC-V control core</li>
             <li><strong>Bus interfaces:</strong> AXI (DRAM model) + APB</li>
             <li><strong>Verify:</strong> RTL simulation</li>
-            
           </ul>
         </div>
       </div>
@@ -407,7 +476,9 @@
        transcribed verbatim from the data file; do not recompute or round.
        2026-07-27 requester revisions: Effective TOPS column removed (Util. =
        Effective TOPS ÷ Peak TOPS is defined above the tables instead), and the
-       empty Power/TOPS-W columns dropped from the two groups without power data. -->
+       empty Power/TOPS-W columns dropped from the two groups without power data.
+       2026-08-06 (WEB-004): third group's clock moved from the Input column into
+       its own Clock column — presentation only, all figures verbatim as before. -->
   <section class="section" id="performance">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Performance</h2>
@@ -416,7 +487,8 @@
         clock frequency; figures are not comparable across groups.
       </p>
       <p class="perf-def has-text-centered">
-        <strong>Util. (%) = Effective TOPS ÷ Peak TOPS</strong>, where Peak TOPS = 2 × 1,024 MACs × clock
+        <strong>Effective TOPS</strong> = operations actually executed ÷ measured runtime (a measured rate, not a peak).
+        <strong>Util. (%) = Effective TOPS ÷ Peak TOPS</strong>, where Peak TOPS = 2 × 1,024 MACs × clock.
       </p>
 
       <div class="perf-group">
@@ -497,20 +569,21 @@
           <p class="perf-group-config" id="perf-transformer-config">Transformer workloads · 1,024 MACs · 25.6 GB/s DRAM</p>
         </div>
         <div class="perf-scroll" role="region" tabindex="0" aria-labelledby="perf-transformer-label perf-transformer-config">
-          <table class="perf-table cols-5">
+          <table class="perf-table cols-6">
             <thead>
               <tr>
                 <th scope="col">Network</th>
                 <th scope="col">Task</th>
                 <th scope="col">Input</th>
+                <th scope="col" class="num">Clock</th>
                 <th scope="col" class="num">Latency (ms)</th>
                 <th scope="col" class="num">Util. (%)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><th scope="row">ViT-Base</th><td data-label="Task">Vision Transformer</td><td data-label="Input">224×224, 12 encoders @ 1 GHz</td><td class="num" data-label="Latency (ms)">21.60</td><td class="num" data-label="Util. (%)">79.0</td></tr>
-              <tr><th scope="row">Gemma2-2b</th><td data-label="Task">LM, prefill (256 tok)</td><td data-label="Input">@ 500 MHz</td><td class="num" data-label="Latency (ms)">1127.71</td><td class="num" data-label="Util. (%)">96.5</td></tr>
-              <tr><th scope="row">Gemma2-2b</th><td data-label="Task">LM, generation (KV 256)</td><td data-label="Input">@ 500 MHz</td><td class="num" data-label="Latency (ms)">143.33</td><td class="num" data-label="Util. (%)">3.6</td></tr>
+              <tr><th scope="row">ViT-Base</th><td data-label="Task">Vision Transformer</td><td data-label="Input">224×224, 12 encoders</td><td class="num" data-label="Clock">1 GHz</td><td class="num" data-label="Latency (ms)">21.60</td><td class="num" data-label="Util. (%)">79.0</td></tr>
+              <tr><th scope="row">Gemma2-2b</th><td data-label="Task">LM, prefill (256 tok)</td><td data-label="Input">—</td><td class="num" data-label="Clock">500 MHz</td><td class="num" data-label="Latency (ms)">1127.71</td><td class="num" data-label="Util. (%)">96.5</td></tr>
+              <tr><th scope="row">Gemma2-2b</th><td data-label="Task">LM, generation (KV 256)</td><td data-label="Input">—</td><td class="num" data-label="Clock">500 MHz</td><td class="num" data-label="Latency (ms)">143.33</td><td class="num" data-label="Util. (%)">3.6</td></tr>
             </tbody>
           </table>
         </div>
@@ -532,14 +605,43 @@
     </div>
   </section>
 
+  <!-- ==================== FAQ (mirrors the FAQPage JSON-LD in <head> — keep in sync) ==================== -->
+  <section class="section" id="faq">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">FAQ</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Is MIDAP open source?</h3>
+          <p>MIDAP is an open NPU (neural processing unit) platform developed by the CAP Lab at
+            Seoul National University. A public open-source release of the full stack — MLIR compiler,
+            cycle-accurate simulator, and RTL — is planned for <strong>H1 2027</strong>.
+            <a href="#" onclick="openWaitlist(); return false;">Join the waitlist</a> to be notified when it
+            lands at <a href="https://github.com/openmidap" target="_blank" rel="noopener">github.com/openmidap</a>.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Does MIDAP include an NPU simulator?</h3>
+          <p>Yes. The platform includes a cycle-accurate NPU simulator that models the datapath, DRAM
+            traffic, and stalls to report end-to-end latency and bottlenecks, plus a low-level simulator
+            that executes the hardware microcode, with Perfetto-compatible trace export.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Is the CNN accelerator RTL validated on an FPGA?</h3>
+          <p>Yes. The CNN accelerator RTL is an FPGA-oriented SoC with an IBEX RISC-V control core and
+            AXI/APB interfaces, validated on a Xilinx KCU1500. The RTL is not tied to any specific board
+            or simulator.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== BIBTEX ==================== -->
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <div class="bibtex-header">
         <h2 class="title">BibTeX</h2>
         <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
-          <i class="fas fa-copy"></i>
-          <span class="copy-text">Copy</span>
+          <svg class="fai" aria-hidden="true"><use href="#i-copy"/></svg>
+          <span class="copy-text" aria-live="polite">Copy</span>
         </button>
       </div>
       
@@ -565,7 +667,12 @@
           <a href="#" onclick="event.stopPropagation(); toggleMoreWorks(); return false;"><em>Papers</em> menu</a>.
         </p>
         <p>
-          A public release of the MIDAP platform is planned for H1 2027.
+          The DAC 2026 demonstration team: Changjae&nbsp;Yi, Hyunsu&nbsp;Moh, Seongwoo&nbsp;Choi,
+          Joon&nbsp;Choi, Youngchul&nbsp;Yoon, and Soonhoi&nbsp;Ha.
+        </p>
+        <p>
+          A public release of the MIDAP platform is planned for <strong>H1 2027</strong>; code and releases
+          will land at <a href="https://github.com/openmidap" target="_blank" rel="noopener">github.com/openmidap</a>.
         </p>
       </div>
 
@@ -594,8 +701,8 @@
         <div class="content">
 
           <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license noopener" href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
             Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
 
@@ -614,7 +721,7 @@
     <div class="waitlist-modal-backdrop"></div>
     <div class="waitlist-modal-card waitlist-modal-card--embed" role="dialog" aria-modal="true" aria-label="Join the waitlist">
       <button class="waitlist-modal-close" onclick="closeWaitlist()" aria-label="Close">
-        <i class="fas fa-times"></i>
+        <svg class="fai" aria-hidden="true"><use href="#i-times"/></svg>
       </button>
 
       <div class="waitlist-embed">
@@ -623,10 +730,7 @@
           title="MIDAP release waitlist form"
           loading="lazy"
           width="100%"
-          height="780"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0">Loading…</iframe>
+          height="780">Loading…</iframe>
         <p class="waitlist-embed-fallback">Form not loading?
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSeUnMUHDPoXblx6yiZHRsc4A2s6YD9WljTt01srlWMXPMNRIw/viewform?hl=en" target="_blank" rel="noopener noreferrer">Open it in a new tab</a>.
         </p>

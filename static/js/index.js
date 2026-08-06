@@ -1,60 +1,75 @@
-window.HELP_IMPROVE_VIDEOJS = false;
+// Reduced-motion preference: honored by every scripted scroll/animation below.
+function prefersReducedMotion() {
+    return typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 // More Works Dropdown Functionality
-function toggleMoreWorks() {
+function setMoreWorksOpen(open) {
     const dropdown = document.getElementById('moreWorksDropdown');
     const button = document.querySelector('.more-works-btn');
-    
-    if (dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
-    } else {
-        dropdown.classList.add('show');
-        button.classList.add('active');
-    }
+    if (!dropdown || !button) return;
+    dropdown.classList.toggle('show', open);
+    button.classList.toggle('active', open);
+    button.setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function moreWorksIsOpen() {
+    const dropdown = document.getElementById('moreWorksDropdown');
+    return !!(dropdown && dropdown.classList.contains('show'));
+}
+
+function toggleMoreWorks() {
+    setMoreWorksOpen(!moreWorksIsOpen());
 }
 
 // Close dropdown when clicking outside
 document.addEventListener('click', function(event) {
     const container = document.querySelector('.more-works-container');
-    const dropdown = document.getElementById('moreWorksDropdown');
-    const button = document.querySelector('.more-works-btn');
-    
     if (container && !container.contains(event.target)) {
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
+        setMoreWorksOpen(false);
     }
 });
 
-// Close dropdown on escape key
+// Close dropdown on escape key; if it was open, hand focus back to its button
 document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        const dropdown = document.getElementById('moreWorksDropdown');
+    if (event.key === 'Escape' && moreWorksIsOpen()) {
+        setMoreWorksOpen(false);
         const button = document.querySelector('.more-works-btn');
-        dropdown.classList.remove('show');
-        button.classList.remove('active');
+        if (button) button.focus();
     }
 });
 
 // Release waitlist modal — opened by any "Join Waitlist" trigger (top-right button, etc.).
+// Focus management: remember the opener, move focus into the dialog, keep Tab cycling
+// inside it while open, and hand focus back to the opener on close.
+let waitlistOpener = null;
+
 function openWaitlist() {
     const modal = document.getElementById('waitlistModal');
     if (!modal) return;
+    waitlistOpener = document.activeElement;
     modal.classList.add('is-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
-    const email = document.getElementById('wl-email');
-    if (email) email.focus();
+    const closeBtn = modal.querySelector('.waitlist-modal-close');
+    if (closeBtn) closeBtn.focus();
 }
 
 function closeWaitlist() {
     const modal = document.getElementById('waitlistModal');
-    if (!modal) return;
+    if (!modal || !modal.classList.contains('is-open')) return;
     modal.classList.remove('is-open');
     modal.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
 
+    if (waitlistOpener && typeof waitlistOpener.focus === 'function' && document.contains(waitlistOpener)) {
+        waitlistOpener.focus();
+    }
+    waitlistOpener = null;
+
     // Reset the form + validation/status state so the popup opens clean next time.
+    // (No-op on the embedded Google Form variant, which has no .release-form.)
     const form = modal.querySelector('.release-form');
     if (form) {
         form.reset();
@@ -68,21 +83,36 @@ function closeWaitlist() {
     }
 }
 
-// Auto-open the waitlist popup once per browser session, so a first-time visitor can
-// sign up immediately. It does NOT reopen on later reloads in the same session; a fresh
-// session (or cleared sessionStorage) shows it again. No-op on pages without the modal.
-function maybeAutoOpenWaitlist() {
-    if (!document.getElementById('waitlistModal')) return;
-    try {
-        if (sessionStorage.getItem('waitlistAutoShown') === '1') return;
-        sessionStorage.setItem('waitlistAutoShown', '1');
-    } catch (e) { /* storage blocked (private mode): fall through and open this once */ }
-    openWaitlist();
-}
-
 // Close the waitlist modal on Escape
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') closeWaitlist();
+});
+
+// Keep Tab cycling inside the open modal (the iframe's inner focus order is the
+// browser's own; this loop covers the modal's chrome around it).
+document.addEventListener('keydown', function(event) {
+    if (event.key !== 'Tab') return;
+    const modal = document.getElementById('waitlistModal');
+    if (!modal || !modal.classList.contains('is-open')) return;
+    const focusables = modal.querySelectorAll('button, a[href], iframe, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first.focus();
+    } else if (!modal.contains(document.activeElement)) {
+        event.preventDefault(); first.focus();
+    }
+});
+
+// Clicking the dimmed backdrop closes the modal, like Escape.
+document.addEventListener('click', function(event) {
+    if (event.target && event.target.classList &&
+        event.target.classList.contains('waitlist-modal-backdrop')) {
+        closeWaitlist();
+    }
 });
 
 // Copy BibTeX to clipboard
@@ -95,8 +125,8 @@ function copyBibTeX() {
         navigator.clipboard.writeText(bibtexElement.textContent).then(function() {
             // Success feedback
             button.classList.add('copied');
-            copyText.textContent = 'Cop';
-            
+            copyText.textContent = 'Copied!';
+
             setTimeout(function() {
                 button.classList.remove('copied');
                 copyText.textContent = 'Copy';
@@ -110,9 +140,9 @@ function copyBibTeX() {
             textArea.select();
             document.execCommand('copy');
             document.body.removeChild(textArea);
-            
+
             button.classList.add('copied');
-            copyText.textContent = 'Cop';
+            copyText.textContent = 'Copied!';
             setTimeout(function() {
                 button.classList.remove('copied');
                 copyText.textContent = 'Copy';
@@ -171,48 +201,24 @@ function fallbackCopy(text) {
 function scrollToTop() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: prefersReducedMotion() ? 'auto' : 'smooth'
     });
 }
 
-// Show/hide scroll to top button
-window.addEventListener('scroll', function() {
-    const scrollButton = document.querySelector('.scroll-to-top');
-    if (window.pageYOffset > 300) {
-        scrollButton.classList.add('visible');
-    } else {
-        scrollButton.classList.remove('visible');
-    }
-});
-
-// Video carousel autoplay when in view
-function setupVideoCarouselAutoplay() {
-    const carouselVideos = document.querySelectorAll('.results-carousel video');
-    
-    if (carouselVideos.length === 0) return;
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            const video = entry.target;
-            if (entry.isIntersecting) {
-                // Video is in view, play it
-                video.play().catch(e => {
-                    // Autoplay failed, probably due to browser policy
-                    console.log('Autoplay prevented:', e);
-                });
-            } else {
-                // Video is out of view, pause it
-                video.pause();
-            }
+// Show/hide scroll to top button (rAF-throttled: at most one class flip per frame)
+(function () {
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(function () {
+            ticking = false;
+            const scrollButton = document.querySelector('.scroll-to-top');
+            if (!scrollButton) return;
+            scrollButton.classList.toggle('visible', window.pageYOffset > 300);
         });
-    }, {
-        threshold: 0.5 // Trigger when 50% of the video is visible
-    });
-    
-    carouselVideos.forEach(video => {
-        observer.observe(video);
-    });
-}
+    }, { passive: true });
+})();
 
 // ============================================================
 // Full-stack flow — interactive SVG pipeline (focus mode).
@@ -480,30 +486,7 @@ function buildFsFlow() {
     homePanel();
 }
 
-$(document).ready(function() {
-    // Check for click events on the navbar burger icon
-
-    var options = {
-		slidesToScroll: 1,
-		slidesToShow: 1,
-		loop: true,
-		infinite: true,
-		autoplay: true,
-		autoplaySpeed: 5000,
-    }
-
-	// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-	
-    bulmaSlider.attach();
-    
-    // Setup video autoplay for carousel
-    setupVideoCarouselAutoplay();
-
+document.addEventListener('DOMContentLoaded', function() {
     // Build the interactive full-stack flow diagram (no-op if its container is absent)
     buildFsFlow();
-
-    // Auto-open the waitlist popup on the first load of the session
-    maybeAutoOpenWaitlist();
-
-})
+});
