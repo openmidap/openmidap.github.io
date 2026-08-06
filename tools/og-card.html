@@ -16,14 +16,16 @@
     background:#2563eb; font-size:17px; font-weight:700; letter-spacing:0.04em;
     text-transform:uppercase; margin-bottom:30px;
   }
-  h1 { font-size:92px; font-weight:800; line-height:1; letter-spacing:-0.01em; margin-bottom:18px; }
-  .sub { font-size:27px; font-weight:600; line-height:1.32; color:#cbd5e1; max-width:560px; margin-bottom:28px; }
+  h1 { font-size:84px; font-weight:800; line-height:1.04; letter-spacing:-0.01em; margin-bottom:20px; }
+  h1 .accent { color:#60a5fa; }
+  .sub { font-size:26px; font-weight:600; line-height:1.35; color:#cbd5e1; max-width:560px; margin-bottom:28px; }
+  .sub b { color:#fff; }
   .chips { display:flex; flex-wrap:wrap; gap:10px; max-width:580px; }
   .chip {
     padding:8px 16px; border:2px solid rgba(148,163,184,0.45); border-radius:999px;
     font-size:17px; font-weight:600; color:#e2e8f0; background:rgba(15,23,42,0.5); white-space:nowrap;
   }
-  .chip b { color:#60a5fa; font-weight:700; }
+  .chip b { color:#60a5fa; }
   .foot { position:absolute; left:56px; bottom:40px; font-size:18px; font-weight:600; color:#94a3b8; white-space:nowrap; }
   .foot b { color:#e2e8f0; }
   .right { flex:1; display:flex; align-items:center; justify-content:center; padding:44px 48px 44px 4px; }
@@ -37,18 +39,19 @@
 <body>
   <div class="left">
     <div class="badge">DAC 2026 · University Demonstration</div>
-    <h1>MIDAP</h1>
-    <div class="sub">A Full-Stack Open NPU Platform for Embedded AI Exploration</div>
+    <h1><span class="accent">Open</span> NPU<br>Platform</h1>
+    <div class="sub"><b>MIDAP</b> — a full-stack platform for embedded AI exploration</div>
     <div class="chips">
       <div class="chip"><b>MLIR</b> compiler</div>
       <div class="chip"><b>Cycle-accurate</b> simulator</div>
       <div class="chip"><b>FPGA-validated</b> RTL</div>
     </div>
+    <div class="foot"><b>openmidap.github.io</b> · CAP Lab, Seoul National University</div>
   </div>
   <div class="right"><div class="shot"><img src="../static/images/architecture.png"></div></div>
-  <div class="foot"><b>openmidap.github.io</b> · CAP Lab, Seoul National University</div>
 </body></html>
-<!-- Social-card source (WEB-001). Regenerate og-card.png with:
+<!-- Social-card source (WEB-001; 2026-08-06 user decision: lead with "Open NPU
+     Platform", MIDAP in the subtitle). Regenerate og-card.png with:
   google-chrome --headless=new --disable-gpu --window-size=1200,800 \
     --force-device-scale-factor=1 --screenshot=og-raw.png "file://$PWD/tools/og-card.html"
   then crop to 1200x630 (this Chrome build under-paints the bottom ~90px of the
