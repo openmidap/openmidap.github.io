@@ -4,6 +4,26 @@ function prefersReducedMotion() {
         window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
+// Manual dark-mode toggle. Default follows the OS (prefers-color-scheme);
+// a click forces light/dark via data-theme on <html> and remembers the choice
+// (read back before first paint by the inline bootstrap in <head>).
+function themeIsDark() {
+    const forced = document.documentElement.getAttribute('data-theme');
+    if (forced === 'dark' || forced === 'light') return forced === 'dark';
+    return typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+}
+
+function toggleTheme() {
+    const next = themeIsDark() ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('midap-theme', next); } catch (e) { /* private mode: not persisted */ }
+    // keep the browser chrome (address-bar) color in sync with the forced theme
+    document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+        m.setAttribute('content', next === 'dark' ? '#0f172a' : '#2563eb');
+    });
+}
+
 // More Works Dropdown Functionality
 function setMoreWorksOpen(open) {
     const dropdown = document.getElementById('moreWorksDropdown');

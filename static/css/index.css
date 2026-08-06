@@ -1856,8 +1856,17 @@ table.model-table tbody tr:last-child td { border-bottom: none; }
    hard-coded light-scheme colors (Bulma defaults, pills, flow-node fills).
    Images keep their light background by design (readability of diagrams).
    ========================================================================== */
+/* ==========================================================================
+   Dark mode (WEB-009) — follows the OS preference by default; the corner
+   moon/sun button forces a scheme via data-theme on <html> (persisted in
+   localStorage, applied pre-paint by an inline <head> bootstrap).
+   The two blocks below are GENERATED from one rule set:
+   (1) OS-dark, unless the visitor forced light; (2) forced dark.
+   Keep them in sync — edit one, mirror the other.
+   Images keep their light background by design (readability of diagrams).
+   ========================================================================== */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --primary-color: #3b82f6;
     --primary-hover: #60a5fa;
     --accent-color: #0ea5e9;
@@ -1869,48 +1878,169 @@ table.model-table tbody tr:last-child td { border-bottom: none; }
     --background-accent: #1e293b;
     --border-color: #2e3b52;
   }
-
-  /* Bulma defaults that carry hard-coded light-scheme colors */
-  .title, .subtitle,
-  .hero.is-light .title, .hero.is-light .subtitle,
-  .content h1, .content h2, .content h3, .content h4,
-  strong {
+  :root:not([data-theme="light"]) .title,
+  :root:not([data-theme="light"]) .subtitle,
+  :root:not([data-theme="light"]) .hero.is-light .title,
+  :root:not([data-theme="light"]) .hero.is-light .subtitle,
+  :root:not([data-theme="light"]) .content h1,
+  :root:not([data-theme="light"]) .content h2,
+  :root:not([data-theme="light"]) .content h3,
+  :root:not([data-theme="light"]) .content h4,
+  :root:not([data-theme="light"]) strong {
     color: var(--text-primary);
   }
-  a { color: #79a7ff; }
-  .hero.is-light { color: inherit; }
-
-  /* dark buttons: a light-gray fill would invert badly, keep a slate fill */
-  .button.is-dark {
+  :root:not([data-theme="light"]) a { color: #79a7ff;
+  }
+  :root:not([data-theme="light"]) .hero.is-light { color: inherit;
+  }
+  :root:not([data-theme="light"]) .button.is-dark {
     background: #2e3b52 !important;
   }
-
-  .site-nav { background: rgba(15, 23, 42, 0.86); }
-
-  /* status pills: deep fills + pale text (AA on their own backgrounds) */
-  .pill.ok      { background: #14532d; color: #bbf7d0; }
-  .pill.info    { background: #1e3a8a; color: #c3d6fe; }
-  .pill.soon    { background: #713f12; color: #fde68a; }
-  .pill.roadmap { background: #1e293b; color: #cbd5e1; }
-  .pill.warn    { background: #7f1d1d; color: #fecaca; }
-
-  .copy-code-btn.copied { color: #bbf7d0; border-color: #14532d; background: #14532d; }
-  .release-form-status.is-success { color: #4ade80; }
-  .release-form-status.is-error,
-  .field-error { color: #f87171; }
-
-  /* full-stack flow node fills (light pastels -> deep tints, same hue coding) */
-  .fsnode--compile rect { fill: #16233f; }
-  .fsnode--codegen rect { fill: #1a2347; }
-  .fsnode--sim rect     { fill: #0e2b38; }
-  :root { --fsflow-warm-bg: #33261a; }
-  .fsp-sw--compile { background: #16233f; }
-  .fsp-sw--sim { background: #0e2b38; }
-  .fsp-link:hover { background: #1e293b; }
-
-  /* diagrams stay on white for readability; frame them so they read as figures */
-  .midap-figure img,
-  .fsflow-board noscript img {
+  :root:not([data-theme="light"]) .site-nav { background: rgba(15, 23, 42, 0.86);
+  }
+  :root:not([data-theme="light"]) .pill.ok { background: #14532d; color: #bbf7d0;
+  }
+  :root:not([data-theme="light"]) .pill.info { background: #1e3a8a; color: #c3d6fe;
+  }
+  :root:not([data-theme="light"]) .pill.soon { background: #713f12; color: #fde68a;
+  }
+  :root:not([data-theme="light"]) .pill.roadmap { background: #1e293b; color: #cbd5e1;
+  }
+  :root:not([data-theme="light"]) .pill.warn { background: #7f1d1d; color: #fecaca;
+  }
+  :root:not([data-theme="light"]) .copy-code-btn.copied { color: #bbf7d0; border-color: #14532d; background: #14532d;
+  }
+  :root:not([data-theme="light"]) .release-form-status.is-success { color: #4ade80;
+  }
+  :root:not([data-theme="light"]) .release-form-status.is-error,
+  :root:not([data-theme="light"]) .field-error { color: #f87171;
+  }
+  :root:not([data-theme="light"]) .fsnode--compile rect { fill: #16233f;
+  }
+  :root:not([data-theme="light"]) .fsnode--codegen rect { fill: #1a2347;
+  }
+  :root:not([data-theme="light"]) .fsnode--sim rect { fill: #0e2b38;
+  }
+  :root:not([data-theme="light"]) { --fsflow-warm-bg: #33261a;
+  }
+  :root:not([data-theme="light"]) .fsp-sw--compile { background: #16233f;
+  }
+  :root:not([data-theme="light"]) .fsp-sw--sim { background: #0e2b38;
+  }
+  :root:not([data-theme="light"]) .fsp-link:hover { background: #1e293b;
+  }
+  :root:not([data-theme="light"]) .midap-figure img,
+  :root:not([data-theme="light"]) .fsflow-board noscript img {
     border: 1px solid var(--border-color);
   }
+}
+
+  :root[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --primary-hover: #60a5fa;
+    --accent-color: #0ea5e9;
+    --text-primary: #e6ecf5;
+    --text-secondary: #a7b4c7;
+    --text-light: #8b99ad;
+    --background-primary: #0f172a;
+    --background-secondary: #172033;
+    --background-accent: #1e293b;
+    --border-color: #2e3b52;
+  }
+  :root[data-theme="dark"] .title,
+  :root[data-theme="dark"] .subtitle,
+  :root[data-theme="dark"] .hero.is-light .title,
+  :root[data-theme="dark"] .hero.is-light .subtitle,
+  :root[data-theme="dark"] .content h1,
+  :root[data-theme="dark"] .content h2,
+  :root[data-theme="dark"] .content h3,
+  :root[data-theme="dark"] .content h4,
+  :root[data-theme="dark"] strong {
+    color: var(--text-primary);
+  }
+  :root[data-theme="dark"] a { color: #79a7ff;
+  }
+  :root[data-theme="dark"] .hero.is-light { color: inherit;
+  }
+  :root[data-theme="dark"] .button.is-dark {
+    background: #2e3b52 !important;
+  }
+  :root[data-theme="dark"] .site-nav { background: rgba(15, 23, 42, 0.86);
+  }
+  :root[data-theme="dark"] .pill.ok { background: #14532d; color: #bbf7d0;
+  }
+  :root[data-theme="dark"] .pill.info { background: #1e3a8a; color: #c3d6fe;
+  }
+  :root[data-theme="dark"] .pill.soon { background: #713f12; color: #fde68a;
+  }
+  :root[data-theme="dark"] .pill.roadmap { background: #1e293b; color: #cbd5e1;
+  }
+  :root[data-theme="dark"] .pill.warn { background: #7f1d1d; color: #fecaca;
+  }
+  :root[data-theme="dark"] .copy-code-btn.copied { color: #bbf7d0; border-color: #14532d; background: #14532d;
+  }
+  :root[data-theme="dark"] .release-form-status.is-success { color: #4ade80;
+  }
+  :root[data-theme="dark"] .release-form-status.is-error,
+  :root[data-theme="dark"] .field-error { color: #f87171;
+  }
+  :root[data-theme="dark"] .fsnode--compile rect { fill: #16233f;
+  }
+  :root[data-theme="dark"] .fsnode--codegen rect { fill: #1a2347;
+  }
+  :root[data-theme="dark"] .fsnode--sim rect { fill: #0e2b38;
+  }
+  :root[data-theme="dark"] { --fsflow-warm-bg: #33261a;
+  }
+  :root[data-theme="dark"] .fsp-sw--compile { background: #16233f;
+  }
+  :root[data-theme="dark"] .fsp-sw--sim { background: #0e2b38;
+  }
+  :root[data-theme="dark"] .fsp-link:hover { background: #1e293b;
+  }
+  :root[data-theme="dark"] .midap-figure img,
+  :root[data-theme="dark"] .fsflow-board noscript img {
+    border: 1px solid var(--border-color);
+  }
+
+/* --- Corner theme toggle (rides the nav bar with the other corner actions) - */
+.theme-toggle {
+  order: 3; /* visually last in the corner cluster */
+  width: 2.65rem;
+  height: 2.65rem;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: var(--background-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+/* moon shows while light is active, sun while dark is active (mirrors the
+   generated dark blocks above — keep in sync) */
+.theme-toggle .icon-sun { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
+  :root:not([data-theme="light"]) .theme-toggle .icon-sun { display: inline-block; }
+}
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: inline-block; }
+
+@media screen and (max-width: 768px) {
+  .theme-toggle { width: 2.35rem; height: 2.35rem; font-size: 0.9rem; }
 }

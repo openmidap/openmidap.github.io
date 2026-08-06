@@ -18,6 +18,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon-32.png">
   <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
 
+  <script>
+    try {
+      var t = localStorage.getItem('midap-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { /* storage blocked */ }
+  </script>
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
