@@ -99,7 +99,7 @@
       {
         "@type": "Question",
         "name": "Is the RTL validated?",
-        "acceptedAnswer": {"@type": "Answer", "text": "Yes. The CNN accelerator RTL is an FPGA-oriented SoC with an IBEX RISC-V control core and AXI/APB interfaces, validated on a Xilinx KCU1500. The RTL is not tied to any specific board or simulator."}
+        "acceptedAnswer": {"@type": "Answer", "text": "Yes — beyond FPGA validation, the design is silicon-ready. The CNN accelerator RTL is an FPGA-oriented SoC with an IBEX RISC-V control core and AXI/APB interfaces, validated on a Xilinx KCU1500, and is not tied to any specific board or simulator. The RTL is frozen and verified through ASIC post-layout (post-netlist + SDF) on a Samsung 14 nm process — every step up to just before fab-out."}
       }
     ]
   }
@@ -546,9 +546,11 @@
         </div>
         <div class="faq-item">
           <h3>Is the RTL validated?</h3>
-          <p>Yes. The CNN accelerator RTL is an FPGA-oriented SoC with an IBEX RISC-V control core and
-            AXI/APB interfaces, validated on a Xilinx KCU1500. The RTL is not tied to any specific board
-            or simulator.</p>
+          <p>Yes — beyond FPGA validation, the design is silicon-ready. The CNN accelerator RTL is an
+            FPGA-oriented SoC with an IBEX RISC-V control core and AXI/APB interfaces, validated on a
+            Xilinx KCU1500, and is not tied to any specific board or simulator. The RTL is frozen and
+            verified through ASIC post-layout (post-netlist + SDF) on a Samsung 14&nbsp;nm process —
+            every step up to just before fab-out.</p>
         </div>
       </div>
     </div>
