@@ -6,7 +6,8 @@
 
   <title>Page not found · MIDAP</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#2563eb">
+  <meta name="theme-color" content="#2563eb" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
 
   <link rel="icon" type="image/svg+xml" href="/static/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicon-32.png">
@@ -50,6 +51,16 @@
       border-radius: 12px;
     }
     a.home:hover { background: #1d4ed8; }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --primary-color: #3b82f6;
+        --text-primary: #e6ecf5;
+        --text-secondary: #a7b4c7;
+        --border-color: #2e3b52;
+      }
+      body { background: #0f172a; }
+      a.home:hover { background: #60a5fa; }
+    }
   </style>
 </head>
 <body>

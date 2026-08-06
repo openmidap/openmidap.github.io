@@ -486,7 +486,45 @@ function buildFsFlow() {
     homePanel();
 }
 
+// Section nav: mark the link whose section is currently on screen (no-op without the nav)
+function buildSectionNav() {
+    const links = document.querySelectorAll('.site-nav-links a[href^="#"]');
+    if (!links.length || typeof IntersectionObserver !== 'function') return;
+    const byId = {};
+    links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+
+    const setActive = function (id) {
+        links.forEach(function (a) {
+            const on = a.getAttribute('href') === '#' + id;
+            a.classList.toggle('is-active', on);
+            if (on) a.setAttribute('aria-current', 'true');
+            else a.removeAttribute('aria-current');
+        });
+    };
+
+    // Track which linked sections are visible; the one nearest the top wins.
+    // In the hero (nothing visible in the band yet) no link is active.
+    const visible = new Set();
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+            if (e.isIntersecting) visible.add(e.target.id);
+            else visible.delete(e.target.id);
+        });
+        let top = null, topY = Infinity;
+        visible.forEach(function (id) {
+            const y = document.getElementById(id).getBoundingClientRect().top;
+            if (y < topY) { topY = y; top = id; }
+        });
+        setActive(top || '');
+    }, { rootMargin: '-15% 0px -55% 0px' });
+    Object.keys(byId).forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Build the interactive full-stack flow diagram (no-op if its container is absent)
     buildFsFlow();
+    buildSectionNav();
 });

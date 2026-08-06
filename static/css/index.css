@@ -430,12 +430,77 @@ code {
 }
 
 
+/* --- Sticky section navigation (WEB-008) -------------------------------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 900; /* below the fixed corner actions (1000) that share the bar row */
+  background: rgba(255, 255, 255, 0.88);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border-color);
+}
+.site-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  height: 3.6rem;
+  /* keep links clear of the fixed Join Waitlist / Papers buttons riding the bar */
+  padding-right: 19rem;
+}
+.site-nav-brand {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  flex: none;
+}
+.site-nav-brand:hover { color: var(--primary-color); }
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.site-nav-links::-webkit-scrollbar { display: none; }
+.site-nav-links a {
+  padding: 0.35rem 0.65rem;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+.site-nav-links a:hover { color: var(--primary-color); background: var(--background-accent); }
+.site-nav-links a.is-active {
+  color: var(--primary-color);
+  background: var(--background-accent);
+}
+/* anchored sections land below the sticky bar */
+section[id], #main-content {
+  scroll-margin-top: 4.4rem;
+}
+
+@media screen and (max-width: 768px) {
+  /* corner actions sit at the bottom on phones, so the bar keeps full width */
+  .site-nav-inner { padding-right: 1rem; height: 3.2rem; gap: 0.75rem; }
+}
+
 /* More Works Dropdown */
-/* Floating top-right controls wrapper (Papers + Join Waitlist, side by side) */
+/* Fixed top-right controls wrapper (Papers + Join Waitlist) — rides on the
+   sticky nav bar row on desktop */
 .floating-actions {
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: 0.55rem;
+  right: 1.25rem;
   z-index: 1000;
   display: flex;
   align-items: flex-start;
@@ -851,6 +916,7 @@ a:focus-visible {
   .scroll-to-top,
   .waitlist-modal,
   .skip-link,
+  .site-nav,
   .fspanel {
     display: none !important;
   }
@@ -1783,3 +1849,68 @@ table.model-table tbody tr:last-child td { border-bottom: none; }
   table.model-table td { padding-top: 0.1rem; }
 }
 
+
+/* ==========================================================================
+   Dark mode (WEB-009) — follows the OS preference; no toggle.
+   Strategy: flip the design tokens, then patch the handful of rules with
+   hard-coded light-scheme colors (Bulma defaults, pills, flow-node fills).
+   Images keep their light background by design (readability of diagrams).
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #3b82f6;
+    --primary-hover: #60a5fa;
+    --accent-color: #0ea5e9;
+    --text-primary: #e6ecf5;
+    --text-secondary: #a7b4c7;
+    --text-light: #8b99ad;
+    --background-primary: #0f172a;
+    --background-secondary: #172033;
+    --background-accent: #1e293b;
+    --border-color: #2e3b52;
+  }
+
+  /* Bulma defaults that carry hard-coded light-scheme colors */
+  .title, .subtitle,
+  .hero.is-light .title, .hero.is-light .subtitle,
+  .content h1, .content h2, .content h3, .content h4,
+  strong {
+    color: var(--text-primary);
+  }
+  a { color: #79a7ff; }
+  .hero.is-light { color: inherit; }
+
+  /* dark buttons: a light-gray fill would invert badly, keep a slate fill */
+  .button.is-dark {
+    background: #2e3b52 !important;
+  }
+
+  .site-nav { background: rgba(15, 23, 42, 0.86); }
+
+  /* status pills: deep fills + pale text (AA on their own backgrounds) */
+  .pill.ok      { background: #14532d; color: #bbf7d0; }
+  .pill.info    { background: #1e3a8a; color: #c3d6fe; }
+  .pill.soon    { background: #713f12; color: #fde68a; }
+  .pill.roadmap { background: #1e293b; color: #cbd5e1; }
+  .pill.warn    { background: #7f1d1d; color: #fecaca; }
+
+  .copy-code-btn.copied { color: #bbf7d0; border-color: #14532d; background: #14532d; }
+  .release-form-status.is-success { color: #4ade80; }
+  .release-form-status.is-error,
+  .field-error { color: #f87171; }
+
+  /* full-stack flow node fills (light pastels -> deep tints, same hue coding) */
+  .fsnode--compile rect { fill: #16233f; }
+  .fsnode--codegen rect { fill: #1a2347; }
+  .fsnode--sim rect     { fill: #0e2b38; }
+  :root { --fsflow-warm-bg: #33261a; }
+  .fsp-sw--compile { background: #16233f; }
+  .fsp-sw--sim { background: #0e2b38; }
+  .fsp-link:hover { background: #1e293b; }
+
+  /* diagrams stay on white for readability; frame them so they read as figures */
+  .midap-figure img,
+  .fsflow-board noscript img {
+    border: 1px solid var(--border-color);
+  }
+}
